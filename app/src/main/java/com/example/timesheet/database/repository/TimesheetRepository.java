@@ -44,52 +44,107 @@ public class TimesheetRepository implements IRepository {
     }
 
     @Override
-    public void insertUser(User user) {
-        instance.insertUser(user);
+    public void insertUser(final User user) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.insertUser(user);
+            }
+        });
     }
 
     @Override
-    public void insertTimesheet(Timesheet timesheet) {
-        instance.insertTimesheet(timesheet);
+    public void insertTimesheet(final Timesheet timesheet) {
+       executor.execute(new Runnable() {
+           @Override
+           public void run() {
+               instance.insertTimesheet(timesheet);
+           }
+       });
+
     }
 
     @Override
-    public void insertWorkday(WorkDay workDay) {
-        instance.insertWorkday(workDay);
+    public void insertWorkday(final WorkDay workDay) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.insertWorkday(workDay);
+            }
+        });
     }
 
     @Override
-    public void updateUser(User user) {
-        instance.updateUser(user);
+    public void updateUser(final User user) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.updateUser(user);
+            }
+        });
     }
 
     @Override
-    public void updateTimesheet(Timesheet timesheet) {
-        instance.updateTimesheet(timesheet);
+    public void updateTimesheet(final Timesheet timesheet) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.updateTimesheet(timesheet);
+            }
+        });
+
     }
 
     @Override
-    public void updateWorkDays(WorkDay workDay) {
-        instance.insertWorkday(workDay);
+    public void updateWorkDays(final WorkDay workDay) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.updateWorkDays(workDay);
+            }
+        });
     }
 
     @Override
-    public void deleteUser(User user) {
-        instance.deleteUser(user);
+    public void deleteUser(final User user) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.deleteUser(user);
+            }
+        });
+
     }
 
     @Override
-    public void deleteTimesheet(Timesheet timesheet) {
-        instance.deleteTimesheet(timesheet);
+    public void deleteTimesheet(final Timesheet timesheet) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.deleteTimesheet(timesheet);
+            }
+        });
+
     }
 
     @Override
-    public void deleteWorkDay(WorkDay workDay) {
-        instance.deleteWorkDay(workDay);
+    public void deleteWorkDay(final WorkDay workDay) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.deleteWorkDay(workDay);
+            }
+        });
+
     }
 
     @Override
-    public void deleteTimesheetAndWorkdays(UUID timesheetId) {
-        instance.deleteTimesheetAndWorkdays(timesheetId);
+    public void deleteTimesheetAndWorkdays(final UUID timesheetId) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                instance.deleteTimesheetAndWorkdays(timesheetId);
+            }
+        });
     }
 }
