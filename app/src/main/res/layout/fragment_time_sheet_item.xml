@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_time_sheet_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintCircleRadius="20dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="2dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Semaine du "/>
+
+        <TextView
+            android:id="@+id/time_sheet_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            tools:text="21/01/2021"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/time_sheet_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            tools:text="INT-001007"/>
+
+        <TextView
+            android:id="@+id/time_sheet_WBS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            tools:text="TM_FA-Forensic Restructuring"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Statut"/>
+
+        <TextView
+            android:id="@+id/time_sheet_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            tools:text="validée"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
