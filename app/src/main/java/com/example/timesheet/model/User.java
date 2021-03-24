@@ -1,10 +1,14 @@
 package com.example.timesheet.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.UUID;
 
+@Entity
 public class User {
 
-
+    @PrimaryKey
     private UUID userId;
 
     private String firstName;

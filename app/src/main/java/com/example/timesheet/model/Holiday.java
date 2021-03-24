@@ -1,8 +1,11 @@
 package com.example.timesheet.model;
 
+import androidx.room.Entity;
+
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
 public class Holiday extends Day {
 
     public Holiday(final UUID uuid, final String name, final Date date) {

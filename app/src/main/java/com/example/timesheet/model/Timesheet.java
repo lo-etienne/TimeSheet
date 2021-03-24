@@ -1,12 +1,17 @@
 package com.example.timesheet.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
 public class Timesheet {
 
+    @PrimaryKey
     private UUID timesheetId;
     private String wbsCode;
     private String wbsDescription;

@@ -1,24 +1,31 @@
 package com.example.timesheet.model;
 
+import androidx.room.Entity;
+
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
 public class WorkDay extends Day {
 
     private String workingHours;
     private String notWorkingHours;
     private String status;
 
+    private UUID timesheetId;
+
     public WorkDay(final UUID uuid,
                    final String name,
                    final Date date,
                    final String workingHours,
                    final String notWorkingHours,
-                   final String status) {
+                   final String status,
+                   final UUID timesheetId) {
         super(uuid, name, date);
         this.workingHours = workingHours;
         this.notWorkingHours = notWorkingHours;
         this.status = status;
+        this.timesheetId = timesheetId;
     }
 
     @Override
