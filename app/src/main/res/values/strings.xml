@@ -1,3 +1,104 @@
 <resources>
     <string name="app_name">TimeSheet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_time_sheet">Create a timesheet</string>
+    <string name="code">Code/Activity</string>
+    <string name="encode_code">"Encode code or activity "</string>
+    <string name="description">Description</string>
+    <string name="encode_description">Encode description</string>
+    <string name="country">Country</string>
+    <string name="monday">Monday</string>
+    <string name="attendance_type">Attendance Type</string>
+    <string name="number_hours">Number hours :</string>
+    <string name="zero">0</string>
+    <string name="number_hours_work">Number work hours :</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="create">Create</string>
+
+    <string-array name="spinner_country">
+        <item>Belgium</item>
+        <item>England</item>
+        <item>France</item>
+        <item>Germany</item>
+        <item>Luxembourg</item>
+        <item>Switzerland</item>
+    </string-array>
+
+    <string-array name="spinner_attendance_type_monday">
+        <item>Presence</item>
+        <item>Homeworking</item>
+        <item>Vacation</item>
+        <item>Sick leave</item>
+        <item>Recovery</item>
+        <item>Child sick leave</item>
+        <item>Extraordinary leave</item>
+    </string-array>
+
+    <string-array name="spinner_attendance_type_tuesday">
+        <item>Presence</item>
+        <item>Homeworking</item>
+        <item>Vacation</item>
+        <item>Sick leave</item>
+        <item>Recovery</item>
+        <item>Child sick leave</item>
+        <item>Extraordinary leave</item>
+    </string-array>
+
+    <string-array name="spinner_attendance_type_wednesday">
+        <item>Presence</item>
+        <item>Homeworking</item>
+        <item>Vacation</item>
+        <item>Sick leave</item>
+        <item>Recovery</item>
+        <item>Child sick leave</item>
+        <item>Extraordinary leave</item>
+    </string-array>
+
+    <string-array name="spinner_attendance_type_thursday">
+        <item>Presence</item>
+        <item>Homeworking</item>
+        <item>Vacation</item>
+        <item>Sick leave</item>
+        <item>Recovery</item>
+        <item>Child sick leave</item>
+        <item>Extraordinary leave</item>
+    </string-array>
+
+    <string-array name="spinner_attendance_type_friday">
+        <item>Presence</item>
+        <item>Homeworking</item>
+        <item>Vacation</item>
+        <item>Sick leave</item>
+        <item>Recovery</item>
+        <item>Child sick leave</item>
+        <item>Extraordinary leave</item>
+    </string-array>
+
+    <string-array name="spinner_attendance_type_saturday">
+        <item>Presence</item>
+        <item>Homeworking</item>
+        <item>Vacation</item>
+        <item>Sick leave</item>
+        <item>Recovery</item>
+        <item>Child sick leave</item>
+        <item>Extraordinary leave</item>
+    </string-array>
+
+    <string-array name="spinner_attendance_type_sunday">
+        <item>Presence</item>
+        <item>Homeworking</item>
+        <item>Vacation</item>
+        <item>Sick leave</item>
+        <item>Recovery</item>
+        <item>Child sick leave</item>
+        <item>Extraordinary leave</item>
+    </string-array>
+
+
 </resources>
