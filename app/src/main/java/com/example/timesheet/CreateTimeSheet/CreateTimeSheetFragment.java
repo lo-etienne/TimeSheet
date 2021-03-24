@@ -2,7 +2,9 @@ package com.example.timesheet.CreateTimeSheet;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +16,6 @@ import android.widget.Spinner;
 
 import com.example.timesheet.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreateTimeSheetFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CreateTimeSheetFragment extends Fragment {
 
     private EditText code;
@@ -47,10 +44,6 @@ public class CreateTimeSheetFragment extends Fragment {
     private EditText hourSundayIfHill;
     private Button create;
 
-
-    public CreateTimeSheetFragment() {
-
-    }
 
     public static CreateTimeSheetFragment newInstance() {
         CreateTimeSheetFragment fragment = new CreateTimeSheetFragment();
@@ -95,6 +88,22 @@ public class CreateTimeSheetFragment extends Fragment {
 
         createSpinner(view);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //CreateTimeSheetViewModel viewModel = new ViewModelProvider(this).get(CreateTimeSheetViewModel.class);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     public void createSpinner(View view){
