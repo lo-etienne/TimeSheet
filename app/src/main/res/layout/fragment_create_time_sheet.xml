@@ -74,6 +74,12 @@
             android:layout_marginTop="10dp"/>
 
         <LinearLayout
+            android:id="@+id/layout_days"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"/>
+        <LinearLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -105,7 +111,7 @@
                     android:layout_marginRight="10dp"
                     />
                 <Spinner
-                    android:id="@+id/spinner_attendance_type_monday"
+                    android:id="@+id/spinner_attendance_type_day"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -132,7 +138,7 @@
                     />
 
                 <EditText
-                    android:id="@+id/nb_hour_monday"
+                    android:id="@+id/nb_hour_day"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -162,7 +168,7 @@
                     />
 
                 <EditText
-                    android:id="@+id/nb_hour_monday2"
+                    android:id="@+id/nb_hour_day_hill"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -172,9 +178,16 @@
                     android:textAlignment="center"
                     android:textSize="20dp" />
             </LinearLayout>
+            <Button
+                android:id="@+id/button_save_day"
+                android:layout_width="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:text="@string/save_day"/>
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -781,7 +794,7 @@
                     android:textAlignment="center"
                     android:textSize="20dp" />
             </LinearLayout>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <Button
             android:id="@+id/button_create"
@@ -789,6 +802,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/create"/>
 
     </LinearLayout>

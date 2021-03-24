@@ -10,13 +10,8 @@ public class CreateTimeSheetPresenter {
         r.insertRecipe(recipe);
     }
 
-    public void addNewIngredient(Ingredient ingredient){
+    public void addNewDay(Day day){
         RepositoryIngredient r = new RepositoryIngredient();
         r.insertIngredient(ingredient);
-    }
-
-    public void addNewTask(Task task){
-        RepositoryTask r = new RepositoryTask();
-        r.insertTask(task);
     }*/
 }

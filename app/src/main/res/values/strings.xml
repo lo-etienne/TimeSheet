@@ -20,6 +20,11 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="create">Create</string>
+    <string name="save_day">Save day</string>
+    <string name="day">Monday</string>
+    <string name="attendance_presence">Presence</string>
+    <string name="nb_hours">6</string>
+    <string name="hour">heure(s)</string>
 
     <string-array name="spinner_country">
         <item>Belgium</item>
@@ -30,7 +35,7 @@
         <item>Switzerland</item>
     </string-array>
 
-    <string-array name="spinner_attendance_type_monday">
+    <string-array name="spinner_attendance_type_day">
         <item>Presence</item>
         <item>Homeworking</item>
         <item>Vacation</item>
@@ -40,7 +45,7 @@
         <item>Extraordinary leave</item>
     </string-array>
 
-    <string-array name="spinner_attendance_type_tuesday">
+    <!--<string-array name="spinner_attendance_type_tuesday">
         <item>Presence</item>
         <item>Homeworking</item>
         <item>Vacation</item>
@@ -98,7 +103,7 @@
         <item>Recovery</item>
         <item>Child sick leave</item>
         <item>Extraordinary leave</item>
-    </string-array>
+    </string-array>-->
 
 
 </resources>
