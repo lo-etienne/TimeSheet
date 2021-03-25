@@ -6,6 +6,7 @@ import androidx.room.Relation;
 import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserWithTimesheets {
@@ -19,7 +20,7 @@ public class UserWithTimesheets {
     )
 
 
-    private List<Timesheet> timesheets;
+    private List<Timesheet> timesheets = new ArrayList<Timesheet>();
 
     public List<Timesheet> getTimesheets() {
         return timesheets;
