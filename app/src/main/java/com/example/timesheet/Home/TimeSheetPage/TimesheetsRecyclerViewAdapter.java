@@ -44,7 +44,6 @@ public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<Timeshee
     public class ViewHolder extends RecyclerView.ViewHolder implements ITimesheetItemScreen {
 
         public final View view;
-
         private TextView date;
         private TextView code;
         private TextView wps;

@@ -24,13 +24,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Date date = new Date();
         date.setTime(System.currentTimeMillis());
-        Timesheet timesheet = new Timesheet(UUID.randomUUID(), "INT-001014", "TM_CNS-Capital Market", date, 0, UUID.randomUUID(), new ArrayList<WorkDay>());
+        UUID userId = UUID.fromString(getIntent().getStringExtra("userId"));
+        Timesheet timesheet = new Timesheet(UUID.randomUUID(), "INT-001014", "TM_CNS-Capital Market", date, 0, userId, new ArrayList<WorkDay>());
         TimesheetRepository.getInstance().insertTimesheet(timesheet);
         setContentView(R.layout.activity_home);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_fragment_container);
         if(currentFragment == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.home_fragment_container, HomeCollectionFragment.newInstance(true)).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.home_fragment_container, HomeCollectionFragment.newInstance(true, userId)).commit();
         }
     }
 }

@@ -17,16 +17,20 @@ import android.view.ViewGroup;
 import com.example.timesheet.R;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.UUID;
+
 public class HomeCollectionFragment extends Fragment {
 
     private HomeViewModel mViewModel;
     private HomeCollectionAdapter collectionPagerAdapter;
     private Boolean isManager;
     private ViewPager viewPager;
+    private UUID userId;
 
-    public static HomeCollectionFragment newInstance(Boolean isManager){
+    public static HomeCollectionFragment newInstance(Boolean isManager, UUID userId){
         HomeCollectionFragment homeCollectionFragment = new HomeCollectionFragment();
         homeCollectionFragment.isManager = isManager;
+        homeCollectionFragment.userId = userId;
         return homeCollectionFragment;
     }
 
@@ -45,16 +49,22 @@ public class HomeCollectionFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        if(mViewModel.getIsManager() == null) {
-            mViewModel.setIsManager(isManager);
+        if(mViewModel.getManager() == null) {
+            mViewModel.setManager(isManager);
         } else {
-            isManager = mViewModel.getIsManager();
+            isManager = mViewModel.getManager();
+        }
+
+        if(mViewModel.getUserId() == null) {
+            mViewModel.setUserId(userId);
+        } else {
+            userId = mViewModel.getUserId();
         }
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        collectionPagerAdapter = new HomeCollectionAdapter(getChildFragmentManager(), isManager);
+        collectionPagerAdapter = new HomeCollectionAdapter(getChildFragmentManager(), userId);
         viewPager = view.findViewById(R.id.pager);
         viewPager.setAdapter(collectionPagerAdapter);
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);

@@ -6,12 +6,21 @@ import java.util.UUID;
 
 public class HomeViewModel extends ViewModel {
     private Boolean isManager;
+    private UUID userId;
 
-    public Boolean getIsManager() {
+    public Boolean getManager() {
         return isManager;
     }
 
-    public void setIsManager(Boolean isManager) {
-        this.isManager = isManager;
+    public void setManager(Boolean manager) {
+        isManager = manager;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 }

@@ -9,19 +9,21 @@ import com.example.timesheet.Home.ManagePage.ManagePageFragment;
 import com.example.timesheet.Home.ManagedPage.ManagedPageFragment;
 import com.example.timesheet.Home.TimeSheetPage.TimesheetsPageFragment;
 
-public class HomeCollectionAdapter extends FragmentStatePagerAdapter {
-    private final Boolean isManager;
+import java.util.UUID;
 
-    public HomeCollectionAdapter(FragmentManager fm, Boolean isManager) {
+public class HomeCollectionAdapter extends FragmentStatePagerAdapter {
+    private final UUID userId;
+
+    public HomeCollectionAdapter(FragmentManager fm, UUID userId) {
         super(fm);
-        this.isManager = isManager;
+        this.userId = userId;
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return TimesheetsPageFragment.newInstance();
+                return TimesheetsPageFragment.newInstance(userId);
             case 1:
                 return ManagePageFragment.newInstance();
             case 2:

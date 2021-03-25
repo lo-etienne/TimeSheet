@@ -1,17 +1,23 @@
 package com.example.timesheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.timesheet.Home.HomeActivity;
+import com.example.timesheet.Home.HomeViewModel;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.UUID;
 
 public class LoginFragment extends Fragment {
 
@@ -21,6 +27,7 @@ public class LoginFragment extends Fragment {
     private TextInputLayout usernameEditText;
     private TextInputLayout passwordEditText;
     private Button loginButton;
+    private UUID userId;
 
     public LoginFragment() {
     }
@@ -63,7 +70,7 @@ public class LoginFragment extends Fragment {
                 String pass = passwordEditText.getEditText().getText().toString();
 
                 if(presenter.areCredentialsValid(mail, pass)) {
-                    ((LoginActivity)getActivity()).onLogin(/* Passer l'id de l'user + manager ou non */);
+                    onLogin(/* Passer l'id de l'user + manager ou non */);
                 } else {
                     errorMessage.setVisibility(View.VISIBLE);
 
@@ -87,5 +94,12 @@ public class LoginFragment extends Fragment {
 
     public static LoginFragment getInstance() {
         return new LoginFragment();
+    }
+
+    public void onLogin() {
+        Toast.makeText(this.getContext(), "Connexion réussie. Redirection...", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this.getActivity(), HomeActivity.class);
+        intent.putExtra("userId", "473eab19-1ef9-467a-9e59-17ac78675d83");
+        startActivity(intent);
     }
 }
