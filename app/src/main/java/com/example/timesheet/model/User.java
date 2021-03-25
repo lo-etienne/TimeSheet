@@ -16,18 +16,23 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
 
     private boolean isApprover;
 
     public User(final UUID userId,
                 final String firstName,
                 final String lastName,
-                final boolean isApprover) {
+                final boolean isApprover,
+                final String email,
+                final String password) {
 
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isApprover = isApprover;
+        this.email = email;
+        this.password = password;
 
     }
 
@@ -69,5 +74,13 @@ public class User {
 
     public void setApprover(final boolean approver) {
         isApprover = approver;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

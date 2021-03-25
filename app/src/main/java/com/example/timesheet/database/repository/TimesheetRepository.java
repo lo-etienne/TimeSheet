@@ -30,7 +30,7 @@ public class TimesheetRepository implements IRepository {
 
     @Override
     public LiveData<User> getUser(UUID userId) {
-        return instance.getUser(userId);
+        return timesheetDao.getUser(userId);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.insertUser(user);
+                timesheetDao.insertUser(user);
             }
         });
     }
@@ -63,7 +63,7 @@ public class TimesheetRepository implements IRepository {
        executor.execute(new Runnable() {
            @Override
            public void run() {
-               instance.insertTimesheet(timesheet);
+               timesheetDao.insertTimesheet(timesheet);
            }
        });
 
@@ -74,7 +74,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.insertWorkday(workDay);
+                timesheetDao.insertWorkDay(workDay);
             }
         });
     }
@@ -84,7 +84,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.updateUser(user);
+                timesheetDao.updateUser(user);
             }
         });
     }
@@ -94,28 +94,31 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.updateTimesheet(timesheet);
+                timesheetDao.updateTimesheet(timesheet);
             }
         });
 
     }
 
     @Override
-    public void updateWorkDays(final WorkDay workDay) {
+    public void updateWorkDay(final WorkDay workDay) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.updateWorkDays(workDay);
+                timesheetDao.updateWorkDay(workDay);
             }
         });
     }
+
+    @Override
+    public LiveData<User> getUserByMailAndPass(String mail, String pass) { return timesheetDao.getUserByMailAndPass(mail, pass); }
 
     @Override
     public void deleteUser(final User user) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.deleteUser(user);
+                timesheetDao.deleteUser(user);
             }
         });
 
@@ -126,7 +129,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.deleteTimesheet(timesheet);
+                timesheetDao.deleteTimesheet(timesheet);
             }
         });
 
@@ -137,7 +140,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.deleteWorkDay(workDay);
+                timesheetDao.deleteWorkDay(workDay);
             }
         });
 
@@ -148,8 +151,13 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.deleteTimesheetAndWorkdays(timesheetId);
+                timesheetDao.deleteTimesheetAndWorkdays(timesheetId);
             }
         });
+    }
+
+    @Override
+    public void getAllUsers() {
+        timesheetDao.getAllUsers();
     }
 }
