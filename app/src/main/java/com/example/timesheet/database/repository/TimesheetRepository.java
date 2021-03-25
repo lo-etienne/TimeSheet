@@ -29,10 +29,9 @@ public class TimesheetRepository implements IRepository {
     }
 
     @Override
-    public LiveData<User> getUser(UUID userId) { return timesheetDao.getUser(userId); }
-
-    @Override
-    public LiveData<User> getUserByMailAndPass(String mail, String pass) { return timesheetDao.getUserByMailAndPass(mail, pass); }
+    public LiveData<User> getUser(UUID userId) {
+        return timesheetDao.getUser(userId);
+    }
 
     @Override
     public LiveData<Timesheet> getTimesheet(UUID timesheetId) {
@@ -75,7 +74,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                timesheetDao.insertWorkDays(workDay);
+                timesheetDao.insertWorkDay(workDay);
             }
         });
     }
@@ -102,14 +101,17 @@ public class TimesheetRepository implements IRepository {
     }
 
     @Override
-    public void updateWorkDays(final WorkDay workDay) {
+    public void updateWorkDay(final WorkDay workDay) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                timesheetDao.updateWorkDays(workDay);
+                timesheetDao.updateWorkDay(workDay);
             }
         });
     }
+
+    @Override
+    public LiveData<User> getUserByMailAndPass(String mail, String pass) { return timesheetDao.getUserByMailAndPass(mail, pass); }
 
     @Override
     public void deleteUser(final User user) {
@@ -138,7 +140,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                timesheetDao.deleteWorkDays(workDay);
+                timesheetDao.deleteWorkDay(workDay);
             }
         });
 

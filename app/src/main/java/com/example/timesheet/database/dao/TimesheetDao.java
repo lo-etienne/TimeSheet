@@ -48,7 +48,7 @@ public abstract class TimesheetDao {
     public abstract void insertTimesheet(final Timesheet timesheet);
 
     @Insert
-    public abstract void insertWorkDays(final WorkDay workDay);
+    public abstract void insertWorkDay(final WorkDay workDay);
 
     // UPDATE
 
@@ -59,7 +59,7 @@ public abstract class TimesheetDao {
     public abstract void updateTimesheet(final Timesheet timesheet);
 
     @Update
-    public abstract void updateWorkDays(final WorkDay workDay);
+    public abstract void updateWorkDay(final WorkDay workDay);
 
     // DELETE
 
@@ -70,13 +70,21 @@ public abstract class TimesheetDao {
     public abstract void deleteTimesheet(final Timesheet timesheet);
 
     @Delete
-    public abstract void deleteWorkDays(final WorkDay workDay);
+    public abstract void deleteWorkDay(final WorkDay workDay);
 
     @Query("DELETE FROM WORKDAY WHERE timesheetId = (:timesheetId)")
     public abstract void deleteWorkdaysByTimesheetId(final UUID timesheetId);
 
     @Query("DELETE FROM Timesheet WHERE timesheetId = (:timesheetId)")
     public abstract void deleteTimesheetById(final UUID timesheetId);
+
+    @Query("SELECT * FROM User WHERE email = (:mail) AND password = (:pass)")
+    public abstract LiveData<User> getUserByMailAndPass(final String mail, final String pass);
+
+    @Query("SELECT * FROM User")
+    public abstract LiveData<List<User>> getAllUsers();
+
+
 
     @Transaction
     public void deleteTimesheetAndWorkdays(final UUID timesheetId) {
