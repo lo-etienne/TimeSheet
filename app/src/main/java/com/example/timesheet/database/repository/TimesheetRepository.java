@@ -10,6 +10,7 @@ import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.User;
 import com.example.timesheet.model.WorkDay;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,6 +47,16 @@ public class TimesheetRepository implements IRepository {
     @Override
     public LiveData<TimesheetWithWorkDays> getWorkDaysFrom(UUID timesheetId) {
         return timesheetDao.getWorkDaysFrom(timesheetId);
+    }
+
+    @Override
+    public LiveData<List<Timesheet>> getTimesheetToApprouveFrom(UUID userId) {
+        return timesheetDao.getTimesheetToApprouveFrom(userId);
+    }
+
+    @Override
+    public LiveData<List<Timesheet>> getTimesheetApprouvedFrom(UUID userId) {
+        return timesheetDao.getTimesheetApprouvedFrom(userId);
     }
 
     @Override

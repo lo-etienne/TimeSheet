@@ -3,6 +3,8 @@ package com.example.timesheet.Home.TimeSheetPage;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,6 +37,7 @@ public class TimesheetsPageFragment extends Fragment implements ITimesheetsScree
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -49,6 +52,12 @@ public class TimesheetsPageFragment extends Fragment implements ITimesheetsScree
         }
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.time_sheet_page_menu, menu);
     }
 
     @Override

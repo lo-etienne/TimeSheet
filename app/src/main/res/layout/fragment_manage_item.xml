@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_time_sheet_item"
+    android:id="@+id/fragment_manage_item"
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:layout_marginRight="15dp"
@@ -20,7 +20,7 @@
         <LinearLayout
             android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"
-            android:id="@+id/time_sheet_infos"
+            android:id="@+id/manage_infos"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -39,7 +39,7 @@
                     android:text="Semaine du "/>
 
                 <TextView
-                    android:id="@+id/time_sheet_date"
+                    android:id="@+id/manage_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="19dp"
@@ -49,7 +49,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/time_sheet_code"
+                android:id="@+id/manage_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="19dp"
@@ -58,7 +58,7 @@
                 tools:text="INT-001007"/>
 
             <TextView
-                android:id="@+id/time_sheet_wps"
+                android:id="@+id/manage_wps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="19dp"
@@ -69,7 +69,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/time_sheet_validate"
+            android:id="@+id/manage_validate"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"

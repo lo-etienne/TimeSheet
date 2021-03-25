@@ -1,9 +1,12 @@
 package com.example.timesheet.database.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.ColumnInfo;
 import androidx.room.Dao;
 import androidx.room.Delete;
+import androidx.room.Embedded;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
@@ -37,8 +40,13 @@ public abstract class TimesheetDao {
     @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
     public abstract LiveData<TimesheetWithWorkDays> getWorkDaysFrom(final UUID timesheetId);
 
-    // INSERT
+    @Query("SELECT * FROM Timesheet WHERE userId != (:userId) AND status = 1")
+    public abstract LiveData<List<Timesheet>> getTimesheetToApprouveFrom(final UUID userId);
 
+    @Query("SELECT * FROM Timesheet WHERE userId != (:userId) AND status = 2")
+    public abstract LiveData<List<Timesheet>> getTimesheetApprouvedFrom(final UUID userId);
+
+    // INSERT
     @Insert
     public abstract void insertUser(final User user);
 

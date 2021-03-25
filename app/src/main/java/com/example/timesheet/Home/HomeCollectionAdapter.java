@@ -25,7 +25,7 @@ public class HomeCollectionAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return TimesheetsPageFragment.newInstance(userId);
             case 1:
-                return ManagePageFragment.newInstance();
+                return ManagePageFragment.newInstance(userId);
             case 2:
                 return ManagedPageFragment.newInstance();
             default:

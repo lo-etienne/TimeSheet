@@ -32,8 +32,5 @@ public class LoginActivity extends AppCompatActivity {
         if(currentFragment == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.login_fragment_container, LoginFragment.getInstance()).commit();
         }
-
-            //TimesheetRepository.getInstance().insertUser(new User(UUID.fromString("473eab19-1ef9-467a-9e59-17ac78675d83"), "Emile", "Davignon", "emiledavignon@gmail.com", "123123", true));
-            //TimesheetRepository.getInstance().insertUser(new User(UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), "Paul", "Basin", "paul.basin@gmail.com", "password", false));
     }
 }
