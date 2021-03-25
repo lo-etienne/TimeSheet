@@ -13,6 +13,7 @@ import java.util.UUID;
 public interface IRepository {
 
     LiveData<User> getUser(final UUID userId);
+    LiveData<User> getUserByMailAndPass(final String mail, final String pass);
     LiveData<UserWithTimesheets> getTimesheetsFrom(final UUID userId);
     LiveData<TimesheetWithWorkDays> getWorkDaysFrom(final UUID timesheetId);
 
@@ -29,4 +30,5 @@ public interface IRepository {
     void deleteWorkDay(final WorkDay workDay);
     void deleteTimesheetAndWorkdays(final UUID timesheetId);
 
+    void getAllUsers();
 }

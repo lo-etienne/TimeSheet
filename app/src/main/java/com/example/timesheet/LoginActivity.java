@@ -28,11 +28,6 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.IL
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-    }
-
-    @Override
     public void onLogin() {
         Toast.makeText(getBaseContext(), "Connexion réussie. Redirection...", Toast.LENGTH_LONG).show();
 
