@@ -18,6 +18,10 @@ public class LoginFragment extends Fragment {
     private TextInputLayout passwordEditText;
     private Button loginButton; /* Changer en MaterialButton */
 
+    public interface ILogIn {
+        void onLogin();
+    }
+
     public LoginFragment() {
     }
 
@@ -46,6 +50,13 @@ public class LoginFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((LoginActivity)getActivity()).onLogin();
+            }
+        });
     }
 
     public static LoginFragment getInstance() {
