@@ -23,7 +23,7 @@ public interface IRepository {
 
     void updateUser(final User user);
     void updateTimesheet(final Timesheet timesheet);
-    void updateWorkDays(final WorkDay workDay);
+    void updateWorkDay(final WorkDay workDay);
 
     void deleteUser(final User user);
     void deleteTimesheet(final Timesheet timesheet);
