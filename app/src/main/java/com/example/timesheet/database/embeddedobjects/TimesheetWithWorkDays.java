@@ -6,6 +6,7 @@ import androidx.room.Relation;
 import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.WorkDay;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TimesheetWithWorkDays {
@@ -17,7 +18,7 @@ public class TimesheetWithWorkDays {
             entityColumn = "timesheetId"
     )
 
-    private List<WorkDay> workDays;
+    private List<WorkDay> workDays = new ArrayList<WorkDay>();
 
     public List<WorkDay> getWorkDays() {
         return workDays;
