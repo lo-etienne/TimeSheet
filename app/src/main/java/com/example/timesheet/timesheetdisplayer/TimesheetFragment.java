@@ -33,49 +33,42 @@ public class TimesheetFragment extends Fragment {
 
     // MONDAY
 
-    private TextView mondayTitle;
     private TextView mondayStatus;
     private TextView mondayHoursWorked;
     private TextView mondayHoursNotWorked;
 
     // TUESDAY
 
-    private TextView tuesdayTitle;
     private TextView tuesdayStatus;
     private TextView tuesdayHoursWorked;
     private TextView tuesdayHoursNotWorked;
 
     // WEDNESDAY
 
-    private TextView wednesdayTitle;
     private TextView wednesdayStatus;
     private TextView wednesdayHoursWorked;
     private TextView wednesdayHoursNotWorked;
 
     // THURSDAY
 
-    private TextView thursdayTitle;
     private TextView thursdayStatus;
     private TextView thursdayHoursWorked;
     private TextView thursdayHoursNotWorked;
 
     // FRIDAY
 
-    private TextView fridayTitle;
     private TextView fridayStatus;
     private TextView fridayHoursWorked;
     private TextView fridayHoursNotWorked;
 
     // SATURDAY
 
-    private TextView saturdayTitle;
     private TextView saturdayStatus;
     private TextView saturdayHoursWorked;
     private TextView saturdayHoursNotWorked;
 
     // SUNDAY
 
-    private TextView sundayTitle;
     private TextView sundayStatus;
     private TextView sundayHoursWorked;
     private TextView sundayHoursNotWorked;
