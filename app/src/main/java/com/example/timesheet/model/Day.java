@@ -1,5 +1,6 @@
 package com.example.timesheet.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.UUID;
 public abstract class Day {
 
     @PrimaryKey
+    @NonNull
     private UUID uuid;
     private String name;
     private Date date;

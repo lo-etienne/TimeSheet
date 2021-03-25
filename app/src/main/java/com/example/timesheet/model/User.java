@@ -1,5 +1,6 @@
 package com.example.timesheet.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 public class User {
 
     @PrimaryKey
+    @NonNull
     private UUID userId;
 
     private String firstName;

@@ -70,9 +70,7 @@ public class WorkDay extends Day {
         return notWorkingHours;
     }
 
-    public void setNotWorkingHours(final String notWorkingHours) {
-        this.notWorkingHours = notWorkingHours;
-    }
+    public void setNotWorkingHours(final String notWorkingHours) { this.notWorkingHours = notWorkingHours; }
 
     public String getStatus() {
         return status;
@@ -81,4 +79,8 @@ public class WorkDay extends Day {
     public void setStatus(final String status) {
         this.status = status;
     }
+
+    public UUID getTimesheetId() { return timesheetId; }
+
+    public void setTimesheetId(UUID timesheetId) { this.timesheetId = timesheetId; }
 }

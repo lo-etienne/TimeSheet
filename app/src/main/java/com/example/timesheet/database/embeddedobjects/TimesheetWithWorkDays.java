@@ -13,8 +13,8 @@ public class TimesheetWithWorkDays {
     @Embedded
     public Timesheet timesheet;
     @Relation(
-            parentColumn = "",
-            entityColumn = ""
+            parentColumn = "timesheetId",
+            entityColumn = "timesheetId"
     )
 
     private List<WorkDay> workDays;
