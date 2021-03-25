@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_time_sheet">Create a timesheet</string>
-    <string name="code">Code/Activity</string>
+    <string name="code">Code</string>
     <string name="encode_code">"Encode code or activity "</string>
     <string name="description">Description</string>
     <string name="encode_description">Encode description</string>
@@ -24,9 +24,9 @@
     <string name="day">Monday</string>
     <string name="attendance_presence">Presence</string>
     <string name="nb_hours">6</string>
-    <string name="hour">h</string>
+    <string name="hour"> hour(s) worked </string>
     <string name="nb_hours_hill">2</string>
-    <string name="hour_hill">h no prested</string>
+    <string name="hour_hill"> hour(s) not worked</string>
     <string name="alarm_max_hour">Alert you have entered a number greater than 10 !</string>
 
     <string-array name="spinner_country">

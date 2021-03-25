@@ -2,6 +2,7 @@ package com.example.timesheet.CreateTimeSheet;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,6 +22,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.timesheet.R;
+import com.example.timesheet.model.Timesheet;
+import com.example.timesheet.model.WorkDay;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 public class CreateTimeSheetFragment extends Fragment{
 
@@ -41,6 +50,8 @@ public class CreateTimeSheetFragment extends Fragment{
     private LinearLayout layoutHour;
     private TextView alarmText;
     private TextView alarmTextHill;
+    private List<WorkDay> workDays;
+    private UUID timeSheetId;
 
     private CreateTimeSheetPresenter createTimeSheetPresenter;
     private CreateTimeSheetViewModel createTimeSheetViewModel;
@@ -76,6 +87,9 @@ public class CreateTimeSheetFragment extends Fragment{
         alarmText = view.findViewById(R.id.alarm_more_hours);
         alarmTextHill = view.findViewById(R.id.alarm_more_hours_hill);
 
+        createTimeSheetPresenter = new CreateTimeSheetPresenter();
+        workDays = new ArrayList<>();
+        timeSheetId = UUID.randomUUID();
         createSpinner(view);
         return view;
     }
@@ -162,15 +176,32 @@ public class CreateTimeSheetFragment extends Fragment{
                 }else{
                     Toast.makeText(getActivity(), "Veuillez remplir tout les champs!", Toast.LENGTH_SHORT).show();
                 }
-                createTimeSheetViewModel.nextDay();
-                if(!createTimeSheetViewModel.lastDay()){
-                    currentday.setText(createTimeSheetViewModel.getCurrentDay());
-                }else{
-                    day.setVisibility(View.GONE);
-                }
+
+                //TODO workDays.add(new WorkDay(UUID.randomUUID(),createTimeSheetViewModel.getCurrentDay(),date,hours,notworkinghours,createTimeSheetViewModel.getCurrentAttendanceDay(),timeSheetId));
+
+                nextDay();
                 viderFormulaire();
             }
         });
+
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Date date = new Date();
+                date.setTime(System.currentTimeMillis());
+
+                Timesheet timesheet = new Timesheet(UUID.randomUUID(), code.getText().toString(), description.getText().toString(),date,1, UUID.fromString("473eab19-1ef9-467a-9e59-17ac78675d83"),workDays);
+                createTimeSheetPresenter.addNewTimeSheet(timesheet);
+            }
+        });
+    }
+    public void nextDay(){
+        createTimeSheetViewModel.nextDay();
+        if(!createTimeSheetViewModel.lastDay()){
+            currentday.setText(createTimeSheetViewModel.getCurrentDay());
+        }else{
+            day.setVisibility(View.GONE);
+        }
     }
 
     public void viderFormulaire(){
