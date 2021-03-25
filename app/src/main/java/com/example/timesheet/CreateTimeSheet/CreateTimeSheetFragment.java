@@ -2,7 +2,6 @@ package com.example.timesheet.CreateTimeSheet;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import android.text.Editable;
@@ -14,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,7 +64,6 @@ public class CreateTimeSheetFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_time_sheet, container, false);
         code = view.findViewById(R.id.code);
         description = view.findViewById(R.id.description);
@@ -83,7 +80,6 @@ public class CreateTimeSheetFragment extends Fragment{
         layoutHour = view.findViewById(R.id.layout_hours);
         alarmText = view.findViewById(R.id.alarm_more_hours);
         alarmTextHill = view.findViewById(R.id.alarm_more_hours_hill);
-
         createTimeSheetPresenter = new CreateTimeSheetPresenter();
         workDays = new ArrayList<>();
         timeSheetId = UUID.randomUUID();
@@ -199,36 +195,31 @@ public class CreateTimeSheetFragment extends Fragment{
 
     public Date getDateOfDay(String today){
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        Date monday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-        Date tuesday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-        Date wednesday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-        Date thursday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-        Date friday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-        Date saturday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-        Date sunday = c.getTime();
-
         switch (today){
             case"Monday":
-                return monday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                return c.getTime();
             case"Tuesday":
-                return tuesday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                return c.getTime();
             case"Wednesday":
-                return wednesday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                return c.getTime();
             case"Thursday":
-                return thursday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                return c.getTime();
             case"Friday":
-                return friday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                return c.getTime();
             case"Saturday":
-                return saturday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                return c.getTime();
             case"Sunday":
-                return sunday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                Date date = c.getTime();
+                c.getTime();
+                c.add(Calendar.DATE,1);
+                return c.getTime();
             default:
                 return null;
         }

@@ -13,8 +13,6 @@ public class CreateTimeSheetViewModel extends ViewModel {
     private String currentAttendanceDay;
     private int currentNumberHour;
     private int currentNumberHourNoPrested;
-    //private String status;
-    //TODO Jour ainsi que les heures et les attendances pour chaque jour
 
 
     public void setCode(String code){
@@ -84,13 +82,5 @@ public class CreateTimeSheetViewModel extends ViewModel {
         }
         return false;
     }
-
-    /* public void setStatus(){
-        this.status = status;
-    }
-
-    public String getStatus(){
-        return status;
-    }*/
 
 }

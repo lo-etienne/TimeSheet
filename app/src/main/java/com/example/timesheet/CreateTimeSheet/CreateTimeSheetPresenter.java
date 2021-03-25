@@ -1,7 +1,6 @@
 package com.example.timesheet.CreateTimeSheet;
 
 import com.example.timesheet.database.repository.TimesheetRepository;
-import com.example.timesheet.model.Day;
 import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.WorkDay;
 
