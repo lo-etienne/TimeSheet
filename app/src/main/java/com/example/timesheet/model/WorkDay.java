@@ -8,8 +8,8 @@ import java.util.UUID;
 @Entity
 public class WorkDay extends Day {
 
-    private String workingHours;
-    private String notWorkingHours;
+    private int workingHours;
+    private int notWorkingHours;
     private String status;
 
     private UUID timesheetId;
@@ -17,8 +17,8 @@ public class WorkDay extends Day {
     public WorkDay(final UUID uuid,
                    final String name,
                    final Date date,
-                   final String workingHours,
-                   final String notWorkingHours,
+                   final int workingHours,
+                   final int notWorkingHours,
                    final String status,
                    final UUID timesheetId) {
         super(uuid, name, date);
@@ -58,19 +58,19 @@ public class WorkDay extends Day {
         super.setDate(date);
     }
 
-    public String getWorkingHours() {
+    public int getWorkingHours() {
         return workingHours;
     }
 
-    public void setWorkingHours(final String workingHours) {
+    public void setWorkingHours(final int workingHours) {
         this.workingHours = workingHours;
     }
 
-    public String getNotWorkingHours() {
+    public int getNotWorkingHours() {
         return notWorkingHours;
     }
 
-    public void setNotWorkingHours(final String notWorkingHours) { this.notWorkingHours = notWorkingHours; }
+    public void setNotWorkingHours(final int notWorkingHours) { this.notWorkingHours = notWorkingHours; }
 
     public String getStatus() {
         return status;
