@@ -22,15 +22,23 @@
         app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/fragment_time_sheet_item" />
 
-    <ImageButton
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/add"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:scaleType="fitCenter"
-        android:background="@null"
         android:layout_marginBottom="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"/>
+        app:cardElevation="15dp"
+        app:cardCornerRadius="50dp">
+        <ImageButton
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/add"
+            android:scaleType="fitCenter"
+            android:background="@null" />
+    </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
