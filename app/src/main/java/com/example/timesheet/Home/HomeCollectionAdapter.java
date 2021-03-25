@@ -7,9 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.timesheet.Home.ManagePage.ManagePageFragment;
 import com.example.timesheet.Home.ManagedPage.ManagedPageFragment;
-import com.example.timesheet.Home.TimeSheetPage.TimeSheetPageFragment;
-
-import java.util.UUID;
+import com.example.timesheet.Home.TimeSheetPage.TimesheetsPageFragment;
 
 public class HomeCollectionAdapter extends FragmentStatePagerAdapter {
     private final Boolean isManager;
@@ -23,7 +21,7 @@ public class HomeCollectionAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return TimeSheetPageFragment.newInstance();
+                return TimesheetsPageFragment.newInstance();
             case 1:
                 return ManagePageFragment.newInstance();
             case 2:

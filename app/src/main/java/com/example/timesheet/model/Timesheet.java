@@ -37,7 +37,8 @@ public class Timesheet {
         this.date = date;
         this.status = status;
         this.userId = userId;
-        this.days.addAll(days);
+        if(days != null && !days.isEmpty())
+            this.days.addAll(days);
     }
 
     public UUID getTimesheetId() {

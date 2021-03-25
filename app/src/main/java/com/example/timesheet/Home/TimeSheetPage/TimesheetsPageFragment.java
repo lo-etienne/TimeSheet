@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.timesheet.R;
 
-public class TimeSheetPageFragment extends Fragment {
+public class TimesheetsPageFragment extends Fragment {
 
     public static Fragment newInstance() {
-        return new TimeSheetPageFragment();
+        return new TimesheetsPageFragment();
     }
 
     @Override
