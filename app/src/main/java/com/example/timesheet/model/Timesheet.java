@@ -1,5 +1,6 @@
 package com.example.timesheet.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 public class Timesheet {
 
     @PrimaryKey
+    @NonNull
     private UUID timesheetId;
     private String wbsCode;
     private String wbsDescription;
@@ -24,15 +26,16 @@ public class Timesheet {
 
     public Timesheet(final UUID timesheetId,
                      final String wbsCode,
-                     final String wbsDescroption,
+                     final String wbsDescription,
                      final Date date,
                      final int status,
                      final UUID userId,
                      final List<WorkDay> days) {
         this.timesheetId = timesheetId;
         this.wbsCode = wbsCode;
-        this.wbsDescription = wbsDescroption;
+        this.wbsDescription = wbsDescription;
         this.date = date;
+        this.status = status;
         this.userId = userId;
         this.days.addAll(days);
     }
