@@ -15,7 +15,7 @@ import com.example.timesheet.model.WorkDay;
 
 import java.util.UUID;
 
-@Database(entities = {User.class, Timesheet.class, WorkDay.class, Holiday.class}, version=1, exportSchema = false)
+@Database(entities = {User.class, Timesheet.class, WorkDay.class, Holiday.class}, version=2, exportSchema = false)
 @TypeConverters({TimesheetTypeConverters.class})
 public abstract class TimesheetDatabase extends RoomDatabase {
 

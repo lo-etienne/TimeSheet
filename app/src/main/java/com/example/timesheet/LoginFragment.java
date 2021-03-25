@@ -22,10 +22,6 @@ public class LoginFragment extends Fragment {
     private TextInputLayout passwordEditText;
     private Button loginButton;
 
-    public interface ILogIn {
-        void onLogin();
-    }
-
     public LoginFragment() {
     }
 
@@ -70,6 +66,13 @@ public class LoginFragment extends Fragment {
                     ((LoginActivity)getActivity()).onLogin(/* Passer l'id de l'user + manager ou non */);
                 } else {
                     errorMessage.setVisibility(View.VISIBLE);
+
+                    errorMessage.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            errorMessage.setVisibility(View.GONE);
+                        }
+                    }, 5000);
                 }
             }
         });
