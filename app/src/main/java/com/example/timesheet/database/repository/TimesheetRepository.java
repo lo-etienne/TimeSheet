@@ -34,13 +34,18 @@ public class TimesheetRepository implements IRepository {
     }
 
     @Override
+    public LiveData<Timesheet> getTimesheet(UUID timesheetId) {
+        return timesheetDao.getTimesheet(timesheetId);
+    }
+
+    @Override
     public LiveData<UserWithTimesheets> getTimesheetsFrom(UUID userId) {
-        return instance.getTimesheetsFrom(userId);
+        return timesheetDao.getTimesheetsFrom(userId);
     }
 
     @Override
     public LiveData<TimesheetWithWorkDays> getWorkDaysFrom(UUID timesheetId) {
-        return instance.getWorkDaysFrom(timesheetId);
+        return timesheetDao.getWorkDaysFrom(timesheetId);
     }
 
     @Override

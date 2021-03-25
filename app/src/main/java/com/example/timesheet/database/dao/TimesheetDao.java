@@ -26,13 +26,16 @@ public abstract class TimesheetDao {
     @Query("SELECT * FROM User WHERE userId = (:userId)")
     public abstract LiveData<User> getUser(final UUID userId);
 
+    @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
+    public abstract LiveData<Timesheet> getTimesheet(final UUID timesheetId);
+
     @Transaction
     @Query("SELECT * FROM User WHERE userId = (:userId)")
     public abstract LiveData<UserWithTimesheets> getTimesheetsFrom(final UUID userId);
 
     @Transaction
     @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
-    public abstract LiveData<TimesheetWithWorkDays> getWordDaysFrom(final UUID timesheetId);
+    public abstract LiveData<TimesheetWithWorkDays> getWorkDaysFrom(final UUID timesheetId);
 
     // INSERT
 
