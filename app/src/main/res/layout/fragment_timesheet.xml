@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".timesheetdisplayer.TimesheetFragment">
+
+
+    <TextView
+        android:id="@+id/wbs_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TM_Deloitte Digital - INT-001001"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Semaine du 22-03-2021 au 28-03-2021"
+        app:layout_constraintTop_toBottomOf="@id/wbs_description"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="APPROVED"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/monday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/status"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/monday_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lundi 21-03-2021"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/monday_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/monday_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Homeworking"/>
+
+            <TextView
+                android:id="@+id/monday_hours_worked"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hours worked : 8h"
+                app:layout_constraintTop_toBottomOf="@id/monday_status"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/monday_hours_not_worked"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hours worked : 8h"
+                app:layout_constraintTop_toBottomOf="@id/monday_hours_worked"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
