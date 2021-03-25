@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,13 +15,12 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginFragment extends Fragment {
 
+    private LoginPresenter presenter;
+
+    private TextView errorMessage;
     private TextInputLayout usernameEditText;
     private TextInputLayout passwordEditText;
-    private Button loginButton; /* Changer en MaterialButton */
-
-    public interface ILogIn {
-        void onLogin();
-    }
+    private Button loginButton;
 
     public LoginFragment() {
     }
@@ -28,6 +28,8 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        presenter = new LoginPresenter();
     }
 
     @Nullable
@@ -42,6 +44,7 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        errorMessage = view.findViewById(R.id.login_error_message);
         usernameEditText = view.findViewById(R.id.login_email);
         passwordEditText = view.findViewById(R.id.login_password);
         loginButton = view.findViewById(R.id.login_submit);
@@ -51,12 +54,35 @@ public class LoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        presenter.startDB();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((LoginActivity)getActivity()).onLogin();
+                String mail = usernameEditText.getEditText().getText().toString();
+                String pass = passwordEditText.getEditText().getText().toString();
+
+                if(presenter.areCredentialsValid(mail, pass)) {
+                    ((LoginActivity)getActivity()).onLogin(/* Passer l'id de l'user + manager ou non */);
+                } else {
+                    errorMessage.setVisibility(View.VISIBLE);
+
+                    errorMessage.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            errorMessage.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+                }
             }
         });
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        presenter.insertUsersInDB();
     }
 
     public static LoginFragment getInstance() {

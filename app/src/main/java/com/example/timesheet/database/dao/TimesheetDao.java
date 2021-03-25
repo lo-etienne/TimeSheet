@@ -22,12 +22,14 @@ import java.util.UUID;
 public abstract class TimesheetDao {
 
     // SELECT
+    @Query("SELECT * FROM User")
+    public abstract LiveData<List<User>> getAllUsers();
 
     @Query("SELECT * FROM User WHERE userId = (:userId)")
     public abstract LiveData<User> getUser(final UUID userId);
 
-    @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
-    public abstract LiveData<Timesheet> getTimesheet(final UUID timesheetId);
+    @Query("SELECT * FROM User WHERE email = (:mail) AND password = (:pass)")
+    public abstract LiveData<User> getUserByMailAndPass(final String mail, final String pass);
 
     @Transaction
     @Query("SELECT * FROM User WHERE userId = (:userId)")
@@ -81,5 +83,4 @@ public abstract class TimesheetDao {
         deleteWorkdaysByTimesheetId(timesheetId);
         deleteTimesheetById(timesheetId);
     }
-
 }
