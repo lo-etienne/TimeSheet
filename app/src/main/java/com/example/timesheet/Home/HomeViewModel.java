@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModel;
 import java.util.UUID;
 
 public class HomeViewModel extends ViewModel {
-    private UUID pageId;
+    private Boolean isManager;
 
-    public UUID getPageId() {
-        return pageId;
+    public Boolean getIsManager() {
+        return isManager;
     }
 
-    public void setPageId(UUID pageId) {
-        this.pageId = pageId;
+    public void setIsManager(Boolean isManager) {
+        this.isManager = isManager;
     }
 }

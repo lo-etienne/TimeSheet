@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.timesheet.Home.HomeActivity;
+
 public class LoginActivity extends AppCompatActivity implements LoginFragment.ILogIn {
 
     @Override
@@ -40,9 +42,9 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.IL
     }
 
     private void launchHomeActivity() {
-        /*Intent switchActivityIntent = new Intent(this, HomeActivity.class);
+        Intent switchActivityIntent = new Intent(this, HomeActivity.class);
         switchActivityIntent.putExtra("userId", "473eab19-1ef9-467a-9e59-17ac78675d83");
         switchActivityIntent.putExtra("isApprover", "1");
-        startActivity(switchActivityIntent);*/
+        startActivity(switchActivityIntent);
     }
 }

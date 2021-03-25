@@ -12,11 +12,11 @@ import com.example.timesheet.Home.TimeSheetPage.TimeSheetPageFragment;
 import java.util.UUID;
 
 public class HomeCollectionAdapter extends FragmentStatePagerAdapter {
-    private final UUID pageId;
+    private final Boolean isManager;
 
-    public HomeCollectionAdapter(FragmentManager fm, UUID pageId) {
+    public HomeCollectionAdapter(FragmentManager fm, Boolean isManager) {
         super(fm);
-        this.pageId = pageId;
+        this.isManager = isManager;
     }
 
     @Override

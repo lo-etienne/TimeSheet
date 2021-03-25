@@ -19,11 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_fragment_container);
         if(currentFragment == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.home_fragment_container, HomeCollectionFragment.newInstance(retrieveUuid())).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.home_fragment_container, HomeCollectionFragment.newInstance(true)).commit();
         }
-    }
-
-    private UUID retrieveUuid() {
-        return UUID.fromString(getIntent().getStringExtra("pageId"));
     }
 }

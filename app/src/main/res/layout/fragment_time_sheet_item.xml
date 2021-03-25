@@ -6,40 +6,43 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintCircleRadius="20dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
     android:layout_marginTop="5dp"
-    android:layout_marginBottom="2dp"
-    android:orientation="vertical">
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal"
+    android:background="@drawable/border">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/time_sheet_infos"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="19dp"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Semaine du "/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/time_sheet_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="19dp"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            tools:text="21/01/2021"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="19dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Semaine du "/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/time_sheet_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="19dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:layout_marginTop="5dp"
+                tools:text="21/01/2021"/>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/time_sheet_code"
             android:layout_width="wrap_content"
@@ -51,7 +54,7 @@
             tools:text="INT-001007"/>
 
         <TextView
-            android:id="@+id/time_sheet_WBS"
+            android:id="@+id/time_sheet_wps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="19dp"
@@ -59,32 +62,14 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             tools:text="TM_FA-Forensic Restructuring"/>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="19dp"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Statut"/>
-
-        <TextView
-            android:id="@+id/time_sheet_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="19dp"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            tools:text="validée"/>
-    </LinearLayout>
-
-
+    <ImageView
+        android:id="@+id/time_sheet_validate"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        tools:src="@drawable/checked"/>
 
 </LinearLayout>
