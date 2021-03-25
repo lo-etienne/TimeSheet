@@ -5,10 +5,14 @@ import androidx.lifecycle.ViewModel;
 
 public class CreateTimeSheetViewModel extends ViewModel {
 
+    private String[] days ={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+    private int currentIndex = 0;
     private String code;
     private String description;
     private String country;
     private String currentAttendanceDay;
+    private int currentNumberHour;
+    private int currentNumberHourNoPrested;
     //private String status;
     //TODO Jour ainsi que les heures et les attendances pour chaque jour
 
@@ -43,6 +47,42 @@ public class CreateTimeSheetViewModel extends ViewModel {
 
     public String getCurrentAttendanceDay(){
         return currentAttendanceDay;
+    }
+
+    public void setCurrentNumberHour(int numberHour){this.currentNumberHour = numberHour;}
+
+    public int getCurrentNumberHour(){return currentNumberHour;}
+
+
+    public void setCurrentNumberHourNoPrested(int numberHour){this.currentNumberHourNoPrested = numberHour;}
+
+    public int getCurrentNumberHourNoPrested(){return currentNumberHourNoPrested;}
+
+    public void nextDay(){
+        if(currentIndex < 7){
+            currentIndex +=1;
+        }
+    }
+
+    public Boolean isADayHill(){
+        if(currentAttendanceDay.equals("Sick leave") || currentAttendanceDay.equals("Child sick leave")|| currentAttendanceDay.equals("Extraordinary leave")){
+            return true;
+        }
+
+        return false;
+    }
+    public String getCurrentDay(){
+        return days[currentIndex];
+    }
+    public boolean lastDay(){
+        return (currentIndex == 7)? true : false;
+    }
+
+    public boolean isAHolidayHill() {
+        if(currentAttendanceDay.equals("Vacation") || currentAttendanceDay.equals("Recovery")|| currentAttendanceDay.equals("Extraordinary leave")){
+            return true;
+        }
+        return false;
     }
 
     /* public void setStatus(){

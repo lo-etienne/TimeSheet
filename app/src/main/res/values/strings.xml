@@ -24,7 +24,10 @@
     <string name="day">Monday</string>
     <string name="attendance_presence">Presence</string>
     <string name="nb_hours">6</string>
-    <string name="hour">heure(s)</string>
+    <string name="hour">h</string>
+    <string name="nb_hours_hill">2</string>
+    <string name="hour_hill">h no prested</string>
+    <string name="alarm_max_hour">Alert you have entered a number greater than 10 !</string>
 
     <string-array name="spinner_country">
         <item>Belgium</item>
@@ -44,66 +47,5 @@
         <item>Child sick leave</item>
         <item>Extraordinary leave</item>
     </string-array>
-
-    <!--<string-array name="spinner_attendance_type_tuesday">
-        <item>Presence</item>
-        <item>Homeworking</item>
-        <item>Vacation</item>
-        <item>Sick leave</item>
-        <item>Recovery</item>
-        <item>Child sick leave</item>
-        <item>Extraordinary leave</item>
-    </string-array>
-
-    <string-array name="spinner_attendance_type_wednesday">
-        <item>Presence</item>
-        <item>Homeworking</item>
-        <item>Vacation</item>
-        <item>Sick leave</item>
-        <item>Recovery</item>
-        <item>Child sick leave</item>
-        <item>Extraordinary leave</item>
-    </string-array>
-
-    <string-array name="spinner_attendance_type_thursday">
-        <item>Presence</item>
-        <item>Homeworking</item>
-        <item>Vacation</item>
-        <item>Sick leave</item>
-        <item>Recovery</item>
-        <item>Child sick leave</item>
-        <item>Extraordinary leave</item>
-    </string-array>
-
-    <string-array name="spinner_attendance_type_friday">
-        <item>Presence</item>
-        <item>Homeworking</item>
-        <item>Vacation</item>
-        <item>Sick leave</item>
-        <item>Recovery</item>
-        <item>Child sick leave</item>
-        <item>Extraordinary leave</item>
-    </string-array>
-
-    <string-array name="spinner_attendance_type_saturday">
-        <item>Presence</item>
-        <item>Homeworking</item>
-        <item>Vacation</item>
-        <item>Sick leave</item>
-        <item>Recovery</item>
-        <item>Child sick leave</item>
-        <item>Extraordinary leave</item>
-    </string-array>
-
-    <string-array name="spinner_attendance_type_sunday">
-        <item>Presence</item>
-        <item>Homeworking</item>
-        <item>Vacation</item>
-        <item>Sick leave</item>
-        <item>Recovery</item>
-        <item>Child sick leave</item>
-        <item>Extraordinary leave</item>
-    </string-array>-->
-
 
 </resources>
