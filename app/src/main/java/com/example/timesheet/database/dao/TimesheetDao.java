@@ -32,7 +32,7 @@ public abstract class TimesheetDao {
 
     @Transaction
     @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
-    public abstract LiveData<TimesheetWithWorkDays> getWordDaysFrom(final UUID timesheetId);
+    public abstract LiveData<TimesheetWithWorkDays> getWorkDaysFrom(final UUID timesheetId);
 
     // INSERT
 

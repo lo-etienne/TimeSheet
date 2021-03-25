@@ -5,10 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +22,8 @@ import android.widget.Toast;
 import com.example.timesheet.R;
 import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.WorkDay;
-
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -97,16 +94,13 @@ public class CreateTimeSheetFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         createTimeSheetViewModel = new ViewModelProvider(this).get(CreateTimeSheetViewModel.class);
         createTimeSheetViewModel.setCode(code.getText().toString());
         createTimeSheetViewModel.setDescription(description.getText().toString());
         createTimeSheetViewModel.setCurrentAttendanceDay(attendanceDayValue);
-
         if(countryValue != null){
             createTimeSheetViewModel.setCountry(countryValue);
         }
-
     }
 
     @Override
@@ -117,11 +111,11 @@ public class CreateTimeSheetFragment extends Fragment{
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                //Nothing to do
             }
             public void onTextChanged(CharSequence s, int start, int before,
                                       int count) {
-
+                //Nothing to do
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -137,11 +131,11 @@ public class CreateTimeSheetFragment extends Fragment{
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                //Nothing to do
             }
             public void onTextChanged(CharSequence s, int start, int before,
                                       int count) {
-
+                //Nothing to do
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -163,9 +157,7 @@ public class CreateTimeSheetFragment extends Fragment{
                 if(!hourDayIfHill.getText().toString().equals("")){
                     createTimeSheetViewModel.setCurrentNumberHourNoPrested(Integer.parseInt(hourDayIfHill.getText().toString()));
                 }
-                if(verifyData()){
-                    //Ingredient ingredient = manageIngredients.createIngredient();
-                    //ingredients.put(ingredient.getIngredientId(), ingredient);
+                if(!attendanceDayValue.equals("")){
                     if(createTimeSheetViewModel.isADayHill()) {
                         addNewViewDay(createTimeSheetViewModel.getCurrentDay(), createTimeSheetViewModel.getCurrentNumberHour(), createTimeSheetViewModel.getCurrentAttendanceDay(), createTimeSheetViewModel.getCurrentNumberHourNoPrested(), true,false);
                     }else if(createTimeSheetViewModel.isAHolidayHill()){
@@ -174,11 +166,9 @@ public class CreateTimeSheetFragment extends Fragment{
                         addNewViewDay(createTimeSheetViewModel.getCurrentDay(),createTimeSheetViewModel.getCurrentNumberHour(),createTimeSheetViewModel.getCurrentAttendanceDay(),createTimeSheetViewModel.getCurrentNumberHourNoPrested(),false,false);
                     }
                 }else{
-                    Toast.makeText(getActivity(), "Veuillez remplir tout les champs!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_SHORT).show();
                 }
-
-                //TODO workDays.add(new WorkDay(UUID.randomUUID(),createTimeSheetViewModel.getCurrentDay(),date,hours,notworkinghours,createTimeSheetViewModel.getCurrentAttendanceDay(),timeSheetId));
-
+                workDays.add(new WorkDay(UUID.randomUUID(),createTimeSheetViewModel.getCurrentDay(),getDateOfDay(createTimeSheetViewModel.getCurrentDay()),createTimeSheetViewModel.getCurrentNumberHour(),createTimeSheetViewModel.getCurrentNumberHourNoPrested(),createTimeSheetViewModel.getCurrentAttendanceDay(),timeSheetId));
                 nextDay();
                 viderFormulaire();
             }
@@ -187,13 +177,61 @@ public class CreateTimeSheetFragment extends Fragment{
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date date = new Date();
-                date.setTime(System.currentTimeMillis());
-
-                Timesheet timesheet = new Timesheet(UUID.randomUUID(), code.getText().toString(), description.getText().toString(),date,1, UUID.fromString("473eab19-1ef9-467a-9e59-17ac78675d83"),workDays);
-                createTimeSheetPresenter.addNewTimeSheet(timesheet);
+                if(!code.getText().toString().equals("") && !description.getText().toString().equals("")){
+                    if(workDays.size() == 7){
+                        Date date = new Date();
+                        date.setTime(System.currentTimeMillis());
+                        Timesheet timesheet = new Timesheet(UUID.randomUUID(), code.getText().toString(), description.getText().toString(),date,1,UUID.fromString("473eab19-1ef9-467a-9e59-17ac78675d83"),workDays);
+                        createTimeSheetPresenter.addNewTimeSheet(timesheet);
+                        for(WorkDay d:workDays){
+                            createTimeSheetPresenter.addNewDay(d);
+                        }
+                        Toast.makeText(getActivity(), "Timesheet created", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getActivity(), "Please fill all the fields for all the days of the week!", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+
+    public Date getDateOfDay(String today){
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        Date monday = c.getTime();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+        Date tuesday = c.getTime();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+        Date wednesday = c.getTime();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+        Date thursday = c.getTime();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+        Date friday = c.getTime();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+        Date saturday = c.getTime();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+        Date sunday = c.getTime();
+
+        switch (today){
+            case"Monday":
+                return monday;
+            case"Tuesday":
+                return tuesday;
+            case"Wednesday":
+                return wednesday;
+            case"Thursday":
+                return thursday;
+            case"Friday":
+                return friday;
+            case"Saturday":
+                return saturday;
+            case"Sunday":
+                return sunday;
+            default:
+                return null;
+        }
     }
     public void nextDay(){
         createTimeSheetViewModel.nextDay();
@@ -210,21 +248,6 @@ public class CreateTimeSheetFragment extends Fragment{
         hourDay.setText("");
         hourDayIfHill.setText("");
     }
-    public boolean verifyData(){
-        if(!attendanceDayValue.equals("")){
-            //TODO
-            /*if(Integer.parseInt(hourDay.getText().toString()) > 10){
-                Toast.makeText(getActivity(), "Attention vous avez encoder un nombre d'eures supérieur à 10!", Toast.LENGTH_SHORT).show();
-            }*/
-            return true;
-        }
-        return false;
-    }
-
-    //public Day createIngredient(){
-        //TODO créer un objet Day
-    //}
-
 
     private void addNewViewDay(final String day, final int numberHours, final String attendanceDay, final int numberHoursHill, final boolean hill, final boolean vacation){
         final View inflater = LayoutInflater.from(getView().getContext()).inflate(R.layout.day, null);
@@ -294,6 +317,7 @@ public class CreateTimeSheetFragment extends Fragment{
             @Override
             public void onNothingSelected(AdapterView<?> parent)
             {
+                countryValue = "Luxembourg";
             }
 
         });
@@ -353,10 +377,11 @@ public class CreateTimeSheetFragment extends Fragment{
             @Override
             public void onNothingSelected(AdapterView<?> parent)
             {
+                attendanceDayValue = "Presence";
+                ifHill.setVisibility(View.GONE);
+                layoutHour.setVisibility(View.VISIBLE);
             }
-
         });
-
 
     }
 }

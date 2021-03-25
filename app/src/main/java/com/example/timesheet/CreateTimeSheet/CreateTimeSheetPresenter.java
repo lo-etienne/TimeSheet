@@ -11,12 +11,10 @@ public class CreateTimeSheetPresenter {
     }
 
     public void addNewTimeSheet(Timesheet timeSheet){
-        TimesheetRepository repository = new TimesheetRepository();
-        repository.insertTimesheet(timeSheet);
+        TimesheetRepository.getInstance().insertTimesheet(timeSheet);
     }
 
     public void addNewDay(WorkDay workDay){
-        TimesheetRepository repository = new TimesheetRepository();
-        repository.insertWorkday(workDay);
+        TimesheetRepository.getInstance().insertWorkday(workDay);
     }
 }

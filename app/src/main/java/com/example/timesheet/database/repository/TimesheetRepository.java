@@ -30,17 +30,17 @@ public class TimesheetRepository implements IRepository {
 
     @Override
     public LiveData<User> getUser(UUID userId) {
-        return instance.getUser(userId);
+        return timesheetDao.getUser(userId);
     }
 
     @Override
     public LiveData<UserWithTimesheets> getTimesheetsFrom(UUID userId) {
-        return instance.getTimesheetsFrom(userId);
+        return timesheetDao.getTimesheetsFrom(userId);
     }
 
     @Override
     public LiveData<TimesheetWithWorkDays> getWorkDaysFrom(UUID timesheetId) {
-        return instance.getWorkDaysFrom(timesheetId);
+        return timesheetDao.getWorkDaysFrom(timesheetId);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.insertUser(user);
+                timesheetDao.insertUser(user);
             }
         });
     }
@@ -58,7 +58,7 @@ public class TimesheetRepository implements IRepository {
        executor.execute(new Runnable() {
            @Override
            public void run() {
-               instance.insertTimesheet(timesheet);
+               timesheetDao.insertTimesheet(timesheet);
            }
        });
 
@@ -69,7 +69,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.insertWorkday(workDay);
+                timesheetDao.insertWorkDays(workDay);
             }
         });
     }
