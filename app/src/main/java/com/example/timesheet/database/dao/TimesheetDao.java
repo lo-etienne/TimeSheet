@@ -76,6 +76,14 @@ public abstract class TimesheetDao {
     @Query("DELETE FROM Timesheet WHERE timesheetId = (:timesheetId)")
     public abstract void deleteTimesheetById(final UUID timesheetId);
 
+    @Query("SELECT * FROM User WHERE email = (:mail) AND password = (:pass)")
+    public abstract LiveData<User> getUserByMailAndPass(final String mail, final String pass);
+
+    @Query("SELECT * FROM User")
+    public abstract LiveData<List<User>> getAllUsers();
+
+
+
     @Transaction
     public void deleteTimesheetAndWorkdays(final UUID timesheetId) {
         deleteWorkdaysByTimesheetId(timesheetId);

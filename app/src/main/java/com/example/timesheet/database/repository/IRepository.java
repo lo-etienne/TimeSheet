@@ -16,6 +16,7 @@ public interface IRepository {
     LiveData<Timesheet> getTimesheet(final UUID timesheetId);
     LiveData<UserWithTimesheets> getTimesheetsFrom(final UUID userId);
     LiveData<TimesheetWithWorkDays> getWorkDaysFrom(final UUID timesheetId);
+    LiveData<User> getUserByMailAndPass(final String mail, final String pass);
 
     void insertUser(final User user);
     void insertTimesheet(final Timesheet timesheet);
@@ -29,5 +30,5 @@ public interface IRepository {
     void deleteTimesheet(final Timesheet timesheet);
     void deleteWorkDay(final WorkDay workDay);
     void deleteTimesheetAndWorkdays(final UUID timesheetId);
-
+    void getAllUsers();
 }

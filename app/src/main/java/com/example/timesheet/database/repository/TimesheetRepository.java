@@ -111,6 +111,9 @@ public class TimesheetRepository implements IRepository {
     }
 
     @Override
+    public LiveData<User> getUserByMailAndPass(String mail, String pass) { return timesheetDao.getUserByMailAndPass(mail, pass); }
+
+    @Override
     public void deleteUser(final User user) {
         executor.execute(new Runnable() {
             @Override
@@ -151,5 +154,10 @@ public class TimesheetRepository implements IRepository {
                 timesheetDao.deleteTimesheetAndWorkdays(timesheetId);
             }
         });
+    }
+
+    @Override
+    public void getAllUsers() {
+        timesheetDao.getAllUsers();
     }
 }
