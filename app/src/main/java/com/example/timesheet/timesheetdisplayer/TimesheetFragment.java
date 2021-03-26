@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.timesheet.R;
+import com.example.timesheet.model.Timesheet;
 
 import org.w3c.dom.Text;
 
@@ -142,6 +144,12 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        TimesheetViewModel timesheetViewModel = new ViewModelProvider(this).get(TimesheetViewModel.class);
+        if(timesheetViewModel.getTimesheetId() == null) {
+            timesheetViewModel.setTimesheetId(timesheetId);
+        } else {
+            timesheetId = timesheetViewModel.getTimesheetId();
+        }
         timesheetPresenter = new TimesheetPresenter(this);
         timesheetPresenter.loadTimesheet(timesheetId);
     }

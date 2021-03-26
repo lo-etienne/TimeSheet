@@ -3,6 +3,7 @@ package com.example.timesheet.timesheetdisplayer;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -96,25 +97,7 @@ public class TimesheetPresenter {
     }
 
     public void initTimesheetSuppression(final Context context) {
-        if(timesheet.getStatus() == 0) {
-            AlertDialog.Builder builder  = new AlertDialog.Builder(context);
-            builder.setCancelable(true);
-            builder.setTitle("Are you sure you want to delete this timesheet?");
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        } else {
+        if(timesheet.getStatus() == 2) {
             AlertDialog.Builder builder  = new AlertDialog.Builder(context);
             builder.setCancelable(true);
             builder.setTitle("Unable to delete");
@@ -122,6 +105,24 @@ public class TimesheetPresenter {
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        } else {
+            AlertDialog.Builder builder  = new AlertDialog.Builder(context);
+            builder.setCancelable(true);
+            builder.setTitle("Are you sure you want to delete this timesheet?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    TimesheetRepository.getInstance().deleteTimesheetAndWorkdays(timesheet.getTimesheetId());
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
                 }
             });
             AlertDialog dialog = builder.create();
