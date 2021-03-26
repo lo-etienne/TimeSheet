@@ -32,10 +32,11 @@ public class HomeActivity extends AppCompatActivity implements ManagedPageFragme
         isManager = getIntent().getBooleanExtra("isManager", false);
 
 
-        /*
-        UUID timesheetId = UUID.fromString("3019d03e-8da0-11eb-8dcd-0242ac130000");
-        UUID timesheetId1 = UUID.fromString("3019d03e-8da0-11eb-8dcd-0242ac130004");
-        UUID timesheetId2 = UUID.fromString("3019d03e-8da0-11eb-8dcd-0242ac130005");
+
+        /*UUID timesheetId = UUID.fromString("3019d03e-8da0-11eb-8dcd-0452ac130000");
+        UUID timesheetId1 = UUID.fromString("3019d03e-8da0-11eb-8dcd-7842ac130004");
+        UUID timesheetId2 = UUID.fromString("3019d03e-8da0-11eb-8dcd-1242ac130005");
+        UUID timesheetId3 = UUID.fromString("3019d03e-8da0-11eb-8dcd-0452ac130111");
         WorkDay monday = new WorkDay(UUID.randomUUID(), "Monday", new Date(), 6, 6, "Presence", timesheetId);
         WorkDay tuesday = new WorkDay(UUID.randomUUID(), "Tuesday", new Date(), 6, 6, "Homeworking", timesheetId);
         WorkDay wednesday = new WorkDay(UUID.randomUUID(), "Wednesday", new Date(), 6, 6, "Extraordinary leave", timesheetId);
@@ -62,11 +63,13 @@ public class HomeActivity extends AppCompatActivity implements ManagedPageFragme
         TimesheetRepository.getInstance().insertWorkday(sunday);
 
 
-        Timesheet timesheet = new Timesheet(timesheetId, "INT-1", "Final", "Belgium", new Date(), 1, UUID.randomUUID(), workDayList);
-        Timesheet timesheet2 = new Timesheet(timesheetId1, "INT-1234", "j'en ai marre", "Luxembourg", new Date(), 2, UUID.randomUUID(), workDayList);
-        Timesheet timesheet3 = new Timesheet(timesheetId2, "INT-123", "c'est bientot fini","Belgium", new Date(), 2, UUID.randomUUID(), workDayList);
+        Timesheet timesheet = new Timesheet(timesheetId, "INT-178", "Final sprint", "Belgium", new Date(), 0, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
+        Timesheet timesheet1 = new Timesheet(timesheetId1, "INT-12347", "Meeting with client", "France", new Date(), 2, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
+        Timesheet timesheet2 = new Timesheet(timesheetId2, "INT-1263", "Finish project","Belgium", new Date(), 2, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
+        Timesheet timesheet3 = new Timesheet(timesheetId3, "INT-12738", "Begin project","Belgium", new Date(), 1, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
 
         TimesheetRepository.getInstance().insertTimesheet(timesheet);
+        TimesheetRepository.getInstance().insertTimesheet(timesheet1);
         TimesheetRepository.getInstance().insertTimesheet(timesheet2);
         TimesheetRepository.getInstance().insertTimesheet(timesheet3);*/
         setContentView(R.layout.activity_home);

@@ -74,7 +74,7 @@ public class TimesheetPresenter {
                                 break;
                         }
                     }
-                    screen.showTimesheet(TimesheetPresenter.this.timesheet.getWbsDescription() + TimesheetPresenter.this.timesheet.getWbsCode(),
+                    screen.showTimesheet(TimesheetPresenter.this.timesheet.getWbsDescription() + " " + TimesheetPresenter.this.timesheet.getWbsCode(),
                             timesheet.getCountry(),
                             timesheet.getDate(),
                             timesheet.getStatus(),

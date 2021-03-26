@@ -1,8 +1,10 @@
 package com.example.timesheet;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
+import com.example.timesheet.database.TimesheetDatabase;
 import com.example.timesheet.database.repository.TimesheetRepository;
 import com.example.timesheet.model.User;
 
@@ -25,7 +27,6 @@ public class LoginPresenter {
 
     public boolean areCredentialsValid(String mail, String pass) {
         LiveData<User> userLd = repos.getUserByMailAndPass(mail, pass);
-
         userLd.observeForever(new androidx.lifecycle.Observer<User>() {
             @Override
             public void onChanged(User user) {

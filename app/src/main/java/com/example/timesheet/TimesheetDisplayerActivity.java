@@ -61,12 +61,7 @@ public class TimesheetDisplayerActivity extends AppCompatActivity {
 
         TimesheetRepository.getInstance().insertTimesheet(timesheet);
 
-
-
          */
-
-
-
 
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (fragment == null) {

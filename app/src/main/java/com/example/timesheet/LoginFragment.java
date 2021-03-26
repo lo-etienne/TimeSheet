@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.timesheet.Home.HomeActivity;
 import com.example.timesheet.Home.HomeViewModel;
+import com.example.timesheet.database.TimesheetDatabase;
 import com.example.timesheet.database.repository.TimesheetRepository;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -34,7 +35,6 @@ public class LoginFragment extends Fragment {
 
     public static LoginFragment newInstance() {
         LoginFragment loginFragment = new LoginFragment();
-
         return loginFragment;
     }
 
@@ -65,9 +65,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         presenter.startDB();
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

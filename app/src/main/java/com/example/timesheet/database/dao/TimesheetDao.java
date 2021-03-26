@@ -8,6 +8,7 @@ import androidx.room.Embedded;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.SkipQueryVerification;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
@@ -37,8 +38,6 @@ public abstract class TimesheetDao {
     public abstract Timesheet getTimesheetObject(final UUID timesheetId);
 
 
-
-
     @Transaction
     @Query("SELECT * FROM User WHERE userId = (:userId)")
     public abstract LiveData<UserWithTimesheets> getTimesheetsFrom(final UUID userId);
@@ -52,6 +51,12 @@ public abstract class TimesheetDao {
 
     @Query("SELECT * FROM Timesheet WHERE userId != (:userId) AND status = 2")
     public abstract LiveData<List<Timesheet>> getTimesheetApprouvedFrom(final UUID userId);
+
+    @Query("SELECT * FROM User WHERE email = (:mail) AND password = (:pass)")
+    public abstract LiveData<User> getUserByMailAndPass(final String mail, final String pass);
+
+    @Query("SELECT * FROM User")
+    public abstract LiveData<List<User>> getAllUsers();
 
     // INSERT
     @Insert
@@ -91,11 +96,7 @@ public abstract class TimesheetDao {
     @Query("DELETE FROM Timesheet WHERE timesheetId = (:timesheetId)")
     public abstract void deleteTimesheetById(final UUID timesheetId);
 
-    @Query("SELECT * FROM User WHERE email = (:mail) AND password = (:pass)")
-    public abstract LiveData<User> getUserByMailAndPass(final String mail, final String pass);
 
-    @Query("SELECT * FROM User")
-    public abstract LiveData<List<User>> getAllUsers();
 
     @Transaction
     public void deleteTimesheetAndWorkdays(final UUID timesheetId) {
