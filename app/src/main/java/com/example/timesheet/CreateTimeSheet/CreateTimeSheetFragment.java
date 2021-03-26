@@ -186,7 +186,7 @@ public class CreateTimeSheetFragment extends Fragment{
                     if(workDays.size() == 7){
                         Date date = new Date();
                         date.setTime(System.currentTimeMillis());
-                        Timesheet timesheet = new Timesheet(UUID.randomUUID(), code.getText().toString(), description.getText().toString(),date,1,userId,workDays);
+                        Timesheet timesheet = new Timesheet(UUID.randomUUID(), code.getText().toString(), description.getText().toString(), countryValue,date,1,userId,workDays);
                         createTimeSheetPresenter.addNewTimeSheet(timesheet);
                         for(WorkDay d:workDays){
                             createTimeSheetPresenter.addNewDay(d);

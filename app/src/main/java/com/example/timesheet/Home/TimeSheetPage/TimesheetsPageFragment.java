@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.timesheet.CreateTimeSheet.CreateTimeSheetActivity;
 import com.example.timesheet.Home.HomeViewModel;
+import com.example.timesheet.Home.ManagedPage.ManagedPageFragment;
 import com.example.timesheet.R;
 import com.example.timesheet.model.Timesheet;
 
@@ -30,6 +31,7 @@ public class TimesheetsPageFragment extends Fragment implements ITimesheetsScree
     private TimesheetsPagePresenter presenter;
     private HomeViewModel mViewModel;
     private UUID userId;
+    private ManagedPageFragment.ISelectedTimesheet callbacks;
 
     public static Fragment newInstance(UUID userId) {
         TimesheetsPageFragment timesheetsPageFragment = new TimesheetsPageFragment();
@@ -51,10 +53,16 @@ public class TimesheetsPageFragment extends Fragment implements ITimesheetsScree
             Context context = view.getContext();
             recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new TimesheetsRecyclerViewAdapter(presenter));
+            recyclerView.setAdapter(new TimesheetsRecyclerViewAdapter(presenter, callbacks));
         }
 
         return view;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        callbacks = (ManagedPageFragment.ISelectedTimesheet) context;
     }
 
     @Override
@@ -67,13 +75,16 @@ public class TimesheetsPageFragment extends Fragment implements ITimesheetsScree
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        if(userId == null) {
+            userId = mViewModel.getUserId();
+        }
         presenter = new TimesheetsPagePresenter(userId,this);
         presenter.loadTimesheets();
     }
 
     @Override
     public void loadView() {
-        recyclerView.setAdapter(new TimesheetsRecyclerViewAdapter(presenter));
+        recyclerView.setAdapter(new TimesheetsRecyclerViewAdapter(presenter, callbacks));
     }
 
     @Override

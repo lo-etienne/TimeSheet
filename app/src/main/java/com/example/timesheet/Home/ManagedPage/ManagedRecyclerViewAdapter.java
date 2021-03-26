@@ -12,11 +12,15 @@ import com.example.timesheet.Home.ManagedPage.ManagedPagePresenter;
 import com.example.timesheet.Home.ManagedPage.IManagedItemScreen;
 import com.example.timesheet.R;
 
+import java.util.UUID;
+
 public class ManagedRecyclerViewAdapter extends RecyclerView.Adapter<ManagedRecyclerViewAdapter.ViewHolder>{
     private ManagedPagePresenter presenter;
+    private ManagedPageFragment.ISelectedTimesheet callbacks;
 
-    public ManagedRecyclerViewAdapter(final ManagedPagePresenter presenter) {
+    public ManagedRecyclerViewAdapter(final ManagedPagePresenter presenter, ManagedPageFragment.ISelectedTimesheet callbacks) {
         this.presenter = presenter;
+        this.callbacks = callbacks;
     }
 
 
@@ -24,7 +28,7 @@ public class ManagedRecyclerViewAdapter extends RecyclerView.Adapter<ManagedRecy
     public ManagedRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.fragment_managed_item, parent, false);
-        return new ManagedRecyclerViewAdapter.ViewHolder(view);
+        return new ManagedRecyclerViewAdapter.ViewHolder(view, callbacks);
     }
 
     @Override
@@ -41,17 +45,21 @@ public class ManagedRecyclerViewAdapter extends RecyclerView.Adapter<ManagedRecy
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements IManagedItemScreen {
+    public class ViewHolder extends RecyclerView.ViewHolder implements IManagedItemScreen, View.OnClickListener {
 
         public final View view;
+        private UUID timesheetId;
         private TextView date;
         private TextView code;
         private TextView wps;
         private ImageView validate;
+        private ManagedPageFragment.ISelectedTimesheet callbacks;
 
-        public ViewHolder(View view) {
+        public ViewHolder(View view, ManagedPageFragment.ISelectedTimesheet callbacks) {
             super(view);
             this.view = view;
+            this.callbacks = callbacks;
+            view.setOnClickListener(this);
             this.date = (TextView) view.findViewById(R.id.managed_date);
             this.code = (TextView) view.findViewById(R.id.managed_code);
             this.wps = (TextView) view.findViewById(R.id.managed_wps);
@@ -64,7 +72,8 @@ public class ManagedRecyclerViewAdapter extends RecyclerView.Adapter<ManagedRecy
         }
 
         @Override
-        public void showTimesheet(String date, String code, String wps, int validate) {
+        public void showTimesheet(UUID timesheetId, String date, String code, String wps, int validate) {
+            this.timesheetId = timesheetId;
             this.date.setText(date);
             this.code.setText(code);
             this.wps.setText(wps);
@@ -74,6 +83,11 @@ public class ManagedRecyclerViewAdapter extends RecyclerView.Adapter<ManagedRecy
                 case 1: this.validate.setImageResource(R.drawable.hourglass); break;
                 case 2: this.validate.setImageResource(R.drawable.checked); break;
             }
+        }
+
+        @Override
+        public void onClick(View view) {
+            callbacks.onSelectedTimesheet(timesheetId);
         }
     }
 }

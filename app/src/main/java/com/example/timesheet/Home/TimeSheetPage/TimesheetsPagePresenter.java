@@ -31,9 +31,12 @@ public class TimesheetsPagePresenter {
         TimesheetRepository.getInstance().getTimesheetsFrom(userId).observeForever(new Observer<UserWithTimesheets>() {
             @Override
             public void onChanged(UserWithTimesheets userWithTimesheets) {
-                TimesheetsPagePresenter.this.timesheets = userWithTimesheets.getTimesheets();
-                Collections.reverse(TimesheetsPagePresenter.this.timesheets);
-                screen.loadView();
+                if(userWithTimesheets != null) {
+                    TimesheetsPagePresenter.this.timesheets = userWithTimesheets.getTimesheets();
+                    Collections.reverse(TimesheetsPagePresenter.this.timesheets);
+
+                    screen.loadView();
+                }
             }
         });
     }
@@ -43,11 +46,11 @@ public class TimesheetsPagePresenter {
         SimpleDateFormat shortDateFormat = new SimpleDateFormat("dd/MM/yy");
 
         String dateString = shortDateFormat.format(timesheet.getDate());
-        holder.showTimesheet(dateString, timesheet.getWbsCode(), timesheet.getWbsDescription(), timesheet.getStatus());
+        holder.showTimesheet(timesheet.getTimesheetId(), dateString, timesheet.getWbsCode(), timesheet.getWbsDescription(), timesheet.getStatus());
     }
 
     public int getItemCount() {
-        if(timesheets == null) {
+        if (timesheets == null) {
             return 0;
         }
         return timesheets.size();

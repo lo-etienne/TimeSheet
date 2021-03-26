@@ -17,6 +17,7 @@ public class Timesheet {
     private UUID timesheetId;
     private String wbsCode;
     private String wbsDescription;
+    private String country;
     private Date date;
     private int status;
 
@@ -27,6 +28,7 @@ public class Timesheet {
     public Timesheet(final UUID timesheetId,
                      final String wbsCode,
                      final String wbsDescription,
+                     final String country,
                      final Date date,
                      final int status,
                      final UUID userId,
@@ -34,6 +36,7 @@ public class Timesheet {
         this.timesheetId = timesheetId;
         this.wbsCode = wbsCode;
         this.wbsDescription = wbsDescription;
+        this.country = country;
         this.date = date;
         this.status = status;
         this.userId = userId;
@@ -63,6 +66,14 @@ public class Timesheet {
 
     public void setWbsDescription(final String wbsDescription) {
         this.wbsDescription = wbsDescription;
+    }
+
+    public String getCountry(){
+        return country;
+    }
+
+    public void setCountry(String country){
+        this.country = country;
     }
 
     public Date getDate() {

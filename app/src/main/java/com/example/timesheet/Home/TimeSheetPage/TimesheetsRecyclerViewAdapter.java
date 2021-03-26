@@ -10,13 +10,18 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.timesheet.Home.ManagedPage.ManagedPageFragment;
 import com.example.timesheet.R;
+
+import java.util.UUID;
 
 public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<TimesheetsRecyclerViewAdapter.ViewHolder>{
     private final TimesheetsPagePresenter presenter;
+    private ManagedPageFragment.ISelectedTimesheet callbacks;
 
-    public TimesheetsRecyclerViewAdapter(final TimesheetsPagePresenter presenter) {
+    public TimesheetsRecyclerViewAdapter(final TimesheetsPagePresenter presenter, ManagedPageFragment.ISelectedTimesheet callbacks) {
         this.presenter = presenter;
+        this.callbacks = callbacks;
     }
 
 
@@ -24,7 +29,7 @@ public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<Timeshee
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.fragment_time_sheet_item, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, callbacks);
     }
 
     @Override
@@ -41,17 +46,22 @@ public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<Timeshee
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements ITimesheetItemScreen {
+    public class ViewHolder extends RecyclerView.ViewHolder implements ITimesheetItemScreen, View.OnClickListener {
 
         public final View view;
+        private UUID timesheetId;
         private TextView date;
         private TextView code;
         private TextView wps;
         private ImageView validate;
+        private ManagedPageFragment.ISelectedTimesheet callbacks;
 
-        public ViewHolder(View view) {
+
+        public ViewHolder(View view, ManagedPageFragment.ISelectedTimesheet callbacks) {
             super(view);
             this.view = view;
+            this.callbacks = callbacks;
+            view.setOnClickListener(this);
             this.date = view.findViewById(R.id.time_sheet_date);
             this.code = view.findViewById(R.id.time_sheet_code);
             this.wps = view.findViewById(R.id.time_sheet_wps);
@@ -64,7 +74,8 @@ public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<Timeshee
         }
 
         @Override
-        public void showTimesheet(String date, String code, String wps, int validate) {
+        public void showTimesheet(UUID timesheetId, String date, String code, String wps, int validate) {
+            this.timesheetId = timesheetId;
             this.date.setText(date);
             this.code.setText(code);
             this.wps.setText(wps);
@@ -74,6 +85,11 @@ public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<Timeshee
                 case 1: this.validate.setImageResource(R.drawable.hourglass); break;
                 case 2: this.validate.setImageResource(R.drawable.checked); break;
             }
+        }
+
+        @Override
+        public void onClick(View view) {
+            callbacks.onSelectedTimesheet(timesheetId);
         }
     }
 }

@@ -9,5 +9,4 @@
     android:layout_width="match_parent"
     app:layoutManager="LinearLayoutManager"
     tools:listitem="@layout/fragment_managed_item">
-
 </androidx.recyclerview.widget.RecyclerView>

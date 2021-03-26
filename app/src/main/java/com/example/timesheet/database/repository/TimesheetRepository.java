@@ -146,7 +146,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.deleteTimesheet(timesheet);
+                timesheetDao.deleteTimesheet(timesheet);
             }
         });
 
@@ -157,7 +157,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.deleteWorkDay(workDay);
+                timesheetDao.deleteWorkDay(workDay);
             }
         });
 
@@ -168,7 +168,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                instance.deleteTimesheetAndWorkdays(timesheetId);
+                timesheetDao.deleteTimesheetAndWorkdays(timesheetId);
             }
         });
     }

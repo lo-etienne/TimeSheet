@@ -2,6 +2,7 @@ package com.example.timesheet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.timesheet.Home.HomeActivity;
 import com.example.timesheet.Home.HomeViewModel;
+import com.example.timesheet.database.repository.TimesheetRepository;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.UUID;
@@ -29,13 +31,16 @@ public class LoginFragment extends Fragment {
     private Button loginButton;
     private UUID userId;
 
-    public LoginFragment() {
+
+    public static LoginFragment newInstance() {
+        LoginFragment loginFragment = new LoginFragment();
+
+        return loginFragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         presenter = new LoginPresenter();
     }
 
@@ -70,7 +75,8 @@ public class LoginFragment extends Fragment {
                 String pass = passwordEditText.getEditText().getText().toString();
 
                 if(presenter.areCredentialsValid(mail, pass)) {
-                    onLogin(/* Passer l'id de l'user + manager ou non */);
+                    userId = presenter.getUserId();
+                    onLogin();
                 } else {
                     errorMessage.setVisibility(View.VISIBLE);
 
@@ -99,7 +105,8 @@ public class LoginFragment extends Fragment {
     public void onLogin() {
         Toast.makeText(this.getContext(), "Connexion réussie. Redirection...", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this.getActivity(), HomeActivity.class);
-        intent.putExtra("userId", "473eab19-1ef9-467a-9e59-17ac78675d83");
+        intent.putExtra("userId", userId.toString());
+        intent.putExtra("isManager", presenter.getIsManager());
         startActivity(intent);
     }
 }

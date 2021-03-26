@@ -37,6 +37,7 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
     private UUID timesheetId;
 
     private TextView wbsData;
+    private TextView country;
     private TextView date;
     private TextView status;
 
@@ -81,14 +82,16 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
     private TextView sundayStatus;
     private TextView sundayHoursWorked;
     private TextView sundayHoursNotWorked;
+    private UUID userId;
 
 
     public TimesheetFragment() {
         // Required empty public constructor
     }
 
-    public static TimesheetFragment newInstance(final UUID timesheetId) {
+    public static TimesheetFragment newInstance(final UUID userId, final UUID timesheetId) {
         TimesheetFragment fragment = new TimesheetFragment();
+        fragment.userId = userId;
         fragment.timesheetId = timesheetId;
         return fragment;
     }
@@ -105,6 +108,7 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
         view = inflater.inflate(R.layout.fragment_timesheet, container, false);
 
         this.wbsData = view.findViewById(R.id.wbs_data);
+        this.country = view.findViewById(R.id.country);
         this.date = view.findViewById(R.id.date);
 
         this.mondayStatus = view.findViewById(R.id.monday_status);
@@ -150,7 +154,12 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
         } else {
             timesheetId = timesheetViewModel.getTimesheetId();
         }
-        timesheetPresenter = new TimesheetPresenter(this);
+        if(timesheetViewModel.getUserId() == null) {
+            timesheetViewModel.setUserId(userId);
+        } else {
+            userId = timesheetViewModel.getUserId();
+        }
+        timesheetPresenter = new TimesheetPresenter(this, userId);
         timesheetPresenter.loadTimesheet(timesheetId);
     }
 
@@ -163,7 +172,7 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.delete_timesheet) {
-            timesheetPresenter.initTimesheetSuppression(this.getContext());
+            timesheetPresenter.initTimesheetSuppression(this.getActivity(), this.getContext());
         }
         return super.onOptionsItemSelected(item);
     }
@@ -226,6 +235,7 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
 
     @Override
     public void showTimesheet(String wbsData,
+                              String country,
                               Date date,
                               int status,
                               String mondayStatus,
@@ -253,6 +263,7 @@ public class TimesheetFragment extends Fragment implements ITimesheetDisplayerSc
         setStatus(view);
 
         this.wbsData.setText(wbsData);
+        this.country.setText(country);
         switch (status) {
             case 0:
                 this.status.setText("DRAFT");

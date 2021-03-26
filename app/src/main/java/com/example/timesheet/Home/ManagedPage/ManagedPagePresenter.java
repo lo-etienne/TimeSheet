@@ -42,7 +42,7 @@ public class ManagedPagePresenter {
         Timesheet timesheet = timesheets.get(postion);
         SimpleDateFormat shortDateFormat = new SimpleDateFormat("dd/MM/yy");
         String dateString = shortDateFormat.format(timesheet.getDate());
-        holder.showTimesheet(dateString, timesheet.getWbsCode(), timesheet.getWbsDescription(), timesheet.getStatus());
+        holder.showTimesheet(timesheet.getTimesheetId(), dateString, timesheet.getWbsCode(), timesheet.getWbsDescription(), timesheet.getStatus());
     }
 
     public int getItemCount() {

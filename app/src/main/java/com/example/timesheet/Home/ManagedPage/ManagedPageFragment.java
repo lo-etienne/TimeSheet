@@ -28,6 +28,11 @@ public class ManagedPageFragment extends Fragment implements IManagedScreen {
     private ManagedPagePresenter presenter;
     private HomeViewModel mViewModel;
     private UUID userId;
+    private ISelectedTimesheet callbacks;
+
+    public interface ISelectedTimesheet{
+        public void onSelectedTimesheet(UUID timesheetId);
+    }
 
     public static Fragment newInstance(UUID userId) {
         ManagedPageFragment managedPageFragment = new ManagedPageFragment();
@@ -49,10 +54,16 @@ public class ManagedPageFragment extends Fragment implements IManagedScreen {
             Context context = view.getContext();
             recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new ManagedRecyclerViewAdapter(presenter));
+            recyclerView.setAdapter(new ManagedRecyclerViewAdapter(presenter, callbacks));
         }
 
         return view;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        callbacks = (ISelectedTimesheet) context;
     }
 
     @Override
@@ -71,7 +82,7 @@ public class ManagedPageFragment extends Fragment implements IManagedScreen {
     @Override
     public void loadView() {
         if(recyclerView != null){
-            recyclerView.setAdapter(new ManagedRecyclerViewAdapter(presenter));
+            recyclerView.setAdapter(new ManagedRecyclerViewAdapter(presenter, callbacks));
         }
     }
 }

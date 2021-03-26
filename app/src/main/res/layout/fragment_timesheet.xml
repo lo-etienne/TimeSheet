@@ -52,12 +52,21 @@
         app:layout_constraintTop_toBottomOf="@id/timesheet" />
 
     <TextView
+        android:id="@+id/country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Country Belgium"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/wbs_data"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Week from 03-22-2021 to 03-28-2021"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/wbs_data"
+        app:layout_constraintTop_toBottomOf="@id/country"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView

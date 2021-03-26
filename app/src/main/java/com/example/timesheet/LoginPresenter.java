@@ -5,10 +5,14 @@ import androidx.lifecycle.LiveData;
 import com.example.timesheet.database.repository.TimesheetRepository;
 import com.example.timesheet.model.User;
 
+import java.util.UUID;
+
 public class LoginPresenter {
 
     private TimesheetRepository repos;
     private boolean exists = false;
+    private UUID userId;
+    private Boolean isManager;
 
     public LoginPresenter() {
         repos = TimesheetRepository.getInstance();
@@ -24,8 +28,11 @@ public class LoginPresenter {
         userLd.observeForever(new androidx.lifecycle.Observer<User>() {
             @Override
             public void onChanged(User user) {
-                if(user != null)
+                if(user != null){
                     exists = true;
+                    userId = user.getUserId();
+                    isManager = user.isApprover();
+                }
             }
         });
 
@@ -34,6 +41,14 @@ public class LoginPresenter {
 
     public void startDB() {
         repos.getAllUsers();
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public Boolean getIsManager(){
+        return isManager;
     }
 }
 

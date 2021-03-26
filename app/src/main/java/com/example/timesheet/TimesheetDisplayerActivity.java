@@ -3,9 +3,12 @@ package com.example.timesheet;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.timesheet.Home.HomeActivity;
+import com.example.timesheet.Home.ManagedPage.ManagedPageFragment;
 import com.example.timesheet.database.repository.TimesheetRepository;
 import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.WorkDay;
@@ -16,7 +19,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity {
+public class TimesheetDisplayerActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (fragment == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, TimesheetFragment.newInstance(timesheetId)).commit();
+            timesheetId = UUID.fromString(getIntent().getStringExtra("timesheetId"));
+            UUID userId = UUID.fromString(getIntent().getStringExtra("userId"));
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, TimesheetFragment.newInstance(userId, timesheetId)).commit();
         }
     }
+
 }

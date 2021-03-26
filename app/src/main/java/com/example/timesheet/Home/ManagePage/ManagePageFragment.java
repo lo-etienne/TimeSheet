@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.timesheet.Home.HomeViewModel;
+import com.example.timesheet.Home.ManagedPage.ManagedPageFragment;
 import com.example.timesheet.Home.TimeSheetPage.ITimesheetsScreen;
 import com.example.timesheet.Home.TimeSheetPage.TimesheetsPageFragment;
 import com.example.timesheet.Home.TimeSheetPage.TimesheetsPagePresenter;
@@ -30,6 +31,8 @@ public class ManagePageFragment extends Fragment implements IManageScreen {
     private ManagePagePresenter presenter;
     private HomeViewModel mViewModel;
     private UUID userId;
+    private ManagedPageFragment.ISelectedTimesheet callbacks;
+
 
     public static Fragment newInstance(UUID userId) {
         ManagePageFragment managePageFragment = new ManagePageFragment();
@@ -51,10 +54,16 @@ public class ManagePageFragment extends Fragment implements IManageScreen {
             Context context = view.getContext();
             recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new ManageRecyclerViewAdapter(presenter));
+            recyclerView.setAdapter(new ManageRecyclerViewAdapter(presenter, callbacks));
         }
 
         return view;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        callbacks = (ManagedPageFragment.ISelectedTimesheet) context;
     }
 
     @Override
@@ -72,6 +81,6 @@ public class ManagePageFragment extends Fragment implements IManageScreen {
 
     @Override
     public void loadView() {
-        recyclerView.setAdapter(new ManageRecyclerViewAdapter(presenter));
+        recyclerView.setAdapter(new ManageRecyclerViewAdapter(presenter, callbacks));
     }
 }
