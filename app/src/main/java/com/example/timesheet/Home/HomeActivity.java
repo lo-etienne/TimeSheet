@@ -25,8 +25,11 @@ public class HomeActivity extends AppCompatActivity {
         Date date = new Date();
         date.setTime(System.currentTimeMillis());
         UUID userId = UUID.fromString(getIntent().getStringExtra("userId"));
-        /*Timesheet timesheet = new Timesheet(UUID.randomUUID(), "INT-001014", "TM_CNS-Capital Market", date, 1, UUID.randomUUID(), new ArrayList<WorkDay>());
-        TimesheetRepository.getInstance().insertTimesheet(timesheet);*/
+        /*
+        Timesheet timesheet = new Timesheet(UUID.randomUUID(), "INT-001016", "TM_CNS-Capital EndGame", date, 2, UUID.randomUUID(), new ArrayList<WorkDay>());
+        Timesheet timesheet2 = new Timesheet(UUID.randomUUID(), "INT-001017", "TM_CNS-Capital Duel", date, 0, UUID.fromString("473eab19-1ef9-467a-9e59-17ac78675d83"), new ArrayList<WorkDay>());
+        TimesheetRepository.getInstance().insertTimesheet(timesheet);
+        TimesheetRepository.getInstance().insertTimesheet(timesheet2);*/
         setContentView(R.layout.activity_home);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_fragment_container);

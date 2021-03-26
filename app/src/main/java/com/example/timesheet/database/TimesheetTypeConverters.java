@@ -17,7 +17,11 @@ public class TimesheetTypeConverters {
 
     @TypeConverter
     public String fromUUIDtoString(UUID uuid) {
-        return uuid.toString();
+        if(uuid != null){
+            return uuid.toString();
+        }else{
+            return UUID.randomUUID().toString();
+        }
     }
 
     @TypeConverter

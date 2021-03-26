@@ -27,7 +27,7 @@ public class HomeCollectionAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return ManagePageFragment.newInstance(userId);
             case 2:
-                return ManagedPageFragment.newInstance();
+                return ManagedPageFragment.newInstance(userId);
             default:
                 return null;
         }

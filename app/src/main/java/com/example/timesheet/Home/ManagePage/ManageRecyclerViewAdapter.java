@@ -72,9 +72,9 @@ public class ManageRecyclerViewAdapter extends RecyclerView.Adapter<ManageRecycl
             this.wps.setText(wps);
 
             switch (validate){
-                case 0: this.validate.setImageResource(R.drawable.hourglass); break;
-                case 1: this.validate.setImageResource(R.drawable.checked); break;
-                case 2: this.validate.setImageResource(R.drawable.cancel); break;
+                case 0: this.validate.setImageResource(R.drawable.cancel); break;
+                case 1: this.validate.setImageResource(R.drawable.hourglass); break;
+                case 2: this.validate.setImageResource(R.drawable.checked); break;
             }
         }
     }

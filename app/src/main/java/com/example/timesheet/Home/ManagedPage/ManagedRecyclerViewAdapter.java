@@ -1,7 +1,5 @@
-package com.example.timesheet.Home.TimeSheetPage;
+package com.example.timesheet.Home.ManagedPage;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,25 +8,27 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.timesheet.Home.ManagedPage.ManagedPagePresenter;
+import com.example.timesheet.Home.ManagedPage.IManagedItemScreen;
 import com.example.timesheet.R;
 
-public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<TimesheetsRecyclerViewAdapter.ViewHolder>{
-    private final TimesheetsPagePresenter presenter;
+public class ManagedRecyclerViewAdapter extends RecyclerView.Adapter<ManagedRecyclerViewAdapter.ViewHolder>{
+    private ManagedPagePresenter presenter;
 
-    public TimesheetsRecyclerViewAdapter(final TimesheetsPagePresenter presenter) {
+    public ManagedRecyclerViewAdapter(final ManagedPagePresenter presenter) {
         this.presenter = presenter;
     }
 
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ManagedRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.fragment_time_sheet_item, parent, false);
-        return new ViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.fragment_managed_item, parent, false);
+        return new ManagedRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ManagedRecyclerViewAdapter.ViewHolder holder, int position) {
         presenter.showTimesheetOn(holder, position);
     }
 
@@ -41,7 +41,7 @@ public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<Timeshee
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements ITimesheetItemScreen {
+    public class ViewHolder extends RecyclerView.ViewHolder implements IManagedItemScreen {
 
         public final View view;
         private TextView date;
@@ -52,10 +52,10 @@ public class TimesheetsRecyclerViewAdapter extends RecyclerView.Adapter<Timeshee
         public ViewHolder(View view) {
             super(view);
             this.view = view;
-            this.date = view.findViewById(R.id.time_sheet_date);
-            this.code = view.findViewById(R.id.time_sheet_code);
-            this.wps = view.findViewById(R.id.time_sheet_wps);
-            this.validate = view.findViewById(R.id.time_sheet_validate);
+            this.date = (TextView) view.findViewById(R.id.managed_date);
+            this.code = (TextView) view.findViewById(R.id.managed_code);
+            this.wps = (TextView) view.findViewById(R.id.managed_wps);
+            this.validate = (ImageView) view.findViewById(R.id.managed_validate);
         }
 
         @Override
