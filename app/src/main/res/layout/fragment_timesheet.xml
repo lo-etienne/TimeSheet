@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".timesheetdisplayer.TimesheetFragment">
+    tools:context=".timesheetdisplayer.TimesheetFragment"
+    android:overScrollMode="always">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -61,14 +65,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:text="APPROVED"
         android:textAlignment="center"
         android:textColor="#43B02A"
         android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/monday"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date" />
+
 
 
     <androidx.cardview.widget.CardView
@@ -104,26 +107,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/monday_title"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Homeworking"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/monday_hours_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/monday_status"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="visible"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/monday_hours_not_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/monday_hours_worked"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,26 +158,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tuesday_title"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Homeworking"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/tuesday_hours_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/tuesday_status"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="visible"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/tuesday_hours_not_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/tuesday_hours_worked"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -216,26 +209,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/wednesday_title"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Vacation"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/wednesday_hours_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/wednesday_status"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/wednesday_hours_not_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/wednesday_hours_worked"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -272,26 +260,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/thursday_title"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Vacation"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/thursday_hours_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/thursday_status"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/thursday_hours_not_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/thursday_hours_worked"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -328,14 +311,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/friday_title"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Homeworking"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/friday_hours_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/friday_status"
                 app:layout_constraintStart_toStartOf="parent"
                 android:visibility="visible"/>
@@ -344,10 +325,8 @@
                 android:id="@+id/friday_hours_not_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/friday_hours_worked"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -384,26 +363,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/saturday_title"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Extraordinary leave"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/saturday_hours_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 6h"
                 app:layout_constraintTop_toBottomOf="@id/saturday_status"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="visible"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/saturday_hours_not_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours not worked : 2h"
                 app:layout_constraintTop_toBottomOf="@id/saturday_hours_worked"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="visible"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -440,31 +414,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/sunday_title"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Vacation"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/sunday_hours_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/sunday_status"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/sunday_hours_not_worked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours worked : 8h"
                 app:layout_constraintTop_toBottomOf="@id/sunday_hours_worked"
-                app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>

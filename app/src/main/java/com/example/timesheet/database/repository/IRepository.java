@@ -14,6 +14,7 @@ public interface IRepository {
 
     LiveData<User> getUser(final UUID userId);
     LiveData<Timesheet> getTimesheet(final UUID timesheetId);
+    Timesheet getTimesheetObject(final UUID timesheetId);
     LiveData<UserWithTimesheets> getTimesheetsFrom(final UUID userId);
     LiveData<TimesheetWithWorkDays> getWorkDaysFrom(final UUID timesheetId);
     LiveData<User> getUserByMailAndPass(final String mail, final String pass);

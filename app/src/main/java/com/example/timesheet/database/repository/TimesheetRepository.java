@@ -39,6 +39,11 @@ public class TimesheetRepository implements IRepository {
     }
 
     @Override
+    public Timesheet getTimesheetObject(UUID timesheetId) {
+        return null;
+    }
+
+    @Override
     public LiveData<UserWithTimesheets> getTimesheetsFrom(UUID userId) {
         return timesheetDao.getTimesheetsFrom(userId);
     }
@@ -112,6 +117,7 @@ public class TimesheetRepository implements IRepository {
 
     @Override
     public LiveData<User> getUserByMailAndPass(String mail, String pass) { return timesheetDao.getUserByMailAndPass(mail, pass); }
+
 
     @Override
     public void deleteUser(final User user) {

@@ -26,8 +26,15 @@ public abstract class TimesheetDao {
     @Query("SELECT * FROM User WHERE userId = (:userId)")
     public abstract LiveData<User> getUser(final UUID userId);
 
+
     @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
     public abstract LiveData<Timesheet> getTimesheet(final UUID timesheetId);
+
+    @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
+    public abstract Timesheet getTimesheetObject(final UUID timesheetId);
+
+
+
 
     @Transaction
     @Query("SELECT * FROM User WHERE userId = (:userId)")
@@ -81,7 +88,6 @@ public abstract class TimesheetDao {
 
     @Query("SELECT * FROM User")
     public abstract LiveData<List<User>> getAllUsers();
-
 
 
     @Transaction

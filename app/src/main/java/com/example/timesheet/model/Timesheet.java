@@ -22,7 +22,7 @@ public class Timesheet {
 
     private UUID userId;
 
-    private List<WorkDay> days;
+    private List<WorkDay> days = new ArrayList<>();
 
     public Timesheet(final UUID timesheetId,
                      final String wbsCode,

@@ -25,5 +25,8 @@ public interface ITimesheetDisplayerScreen {
                        final String fridayHoursNotWorked,
                        final String saturdayStatus,
                        final String saturdayHoursWorked,
-                       final String saturdayHoursNotWorked);
+                       final String saturdayHoursNotWorked,
+                       final String sundayStatus,
+                       final String sundayHoursWorked,
+                       final String sundayHoursNotWorked);
 }
