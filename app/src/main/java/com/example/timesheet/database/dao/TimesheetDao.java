@@ -97,7 +97,6 @@ public abstract class TimesheetDao {
     @Query("SELECT * FROM User")
     public abstract LiveData<List<User>> getAllUsers();
 
-
     @Transaction
     public void deleteTimesheetAndWorkdays(final UUID timesheetId) {
         deleteWorkdaysByTimesheetId(timesheetId);
