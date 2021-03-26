@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         UUID timesheetId = UUID.fromString("3019d03e-8da0-11eb-8dcd-0242ac130003");
 
-        /*
 
+        /*
         WorkDay monday = new WorkDay(UUID.randomUUID(), "Monday", new Date(), 6, 6, "Presence", timesheetId);
         WorkDay tuesday = new WorkDay(UUID.randomUUID(), "Tuesday", new Date(), 6, 6, "Homeworking", timesheetId);
         WorkDay wednesday = new WorkDay(UUID.randomUUID(), "Wednesday", new Date(), 6, 6, "Extraordinary leave", timesheetId);
@@ -51,11 +51,14 @@ public class MainActivity extends AppCompatActivity {
         TimesheetRepository.getInstance().insertWorkday(sunday);
 
 
-        Timesheet timesheet = new Timesheet(timesheetId, "INT-1234", "Mobile Development", new Date(), 0, UUID.randomUUID(), workDayList);
+        Timesheet timesheet = new Timesheet(timesheetId, "INT-1234", "Mobile Development", new Date(), 2, UUID.randomUUID(), workDayList);
 
         TimesheetRepository.getInstance().insertTimesheet(timesheet);
 
+
+
          */
+
 
 
 
