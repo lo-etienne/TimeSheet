@@ -10,7 +10,6 @@ import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.User;
 import com.example.timesheet.model.WorkDay;
 
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -140,7 +139,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                timesheetDao.deleteTimesheet(timesheet);
+                instance.deleteTimesheet(timesheet);
             }
         });
 
@@ -151,7 +150,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                timesheetDao.deleteWorkDay(workDay);
+                instance.deleteWorkDay(workDay);
             }
         });
 
@@ -162,7 +161,7 @@ public class TimesheetRepository implements IRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                timesheetDao.deleteTimesheetAndWorkdays(timesheetId);
+                instance.deleteTimesheetAndWorkdays(timesheetId);
             }
         });
     }
