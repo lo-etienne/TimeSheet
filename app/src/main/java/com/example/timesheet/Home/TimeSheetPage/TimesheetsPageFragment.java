@@ -1,10 +1,12 @@
 package com.example.timesheet.Home.TimeSheetPage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.timesheet.CreateTimeSheet.CreateTimeSheetActivity;
 import com.example.timesheet.Home.HomeViewModel;
 import com.example.timesheet.R;
 import com.example.timesheet.model.Timesheet;
@@ -71,5 +74,16 @@ public class TimesheetsPageFragment extends Fragment implements ITimesheetsScree
     @Override
     public void loadView() {
         recyclerView.setAdapter(new TimesheetsRecyclerViewAdapter(presenter));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.add) {
+            Intent intent = new Intent(getContext(), CreateTimeSheetActivity.class);
+            intent.putExtra("userId", userId.toString());
+            startActivity(intent);
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }

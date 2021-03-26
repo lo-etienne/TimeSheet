@@ -1,4 +1,5 @@
 package com.example.timesheet.CreateTimeSheet;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -19,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.timesheet.Home.HomeActivity;
 import com.example.timesheet.R;
 import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.WorkDay;
@@ -49,12 +52,14 @@ public class CreateTimeSheetFragment extends Fragment{
     private TextView alarmTextHill;
     private List<WorkDay> workDays;
     private UUID timeSheetId;
+    private UUID userId;
 
     private CreateTimeSheetPresenter createTimeSheetPresenter;
     private CreateTimeSheetViewModel createTimeSheetViewModel;
 
-    public static CreateTimeSheetFragment newInstance() {
+    public static CreateTimeSheetFragment newInstance(UUID userId) {
         CreateTimeSheetFragment fragment = new CreateTimeSheetFragment();
+        fragment.userId = userId;
         return fragment;
     }
 
@@ -181,12 +186,15 @@ public class CreateTimeSheetFragment extends Fragment{
                     if(workDays.size() == 7){
                         Date date = new Date();
                         date.setTime(System.currentTimeMillis());
-                        Timesheet timesheet = new Timesheet(UUID.randomUUID(), code.getText().toString(), description.getText().toString(),date,1,UUID.fromString("473eab19-1ef9-467a-9e59-17ac78675d83"),workDays);
+                        Timesheet timesheet = new Timesheet(UUID.randomUUID(), code.getText().toString(), description.getText().toString(),date,1,userId,workDays);
                         createTimeSheetPresenter.addNewTimeSheet(timesheet);
                         for(WorkDay d:workDays){
                             createTimeSheetPresenter.addNewDay(d);
                         }
                         Toast.makeText(getActivity(), "Timesheet created", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getContext(), HomeActivity.class);
+                        intent.putExtra("userId", userId.toString());
+                        startActivity(intent);
                     }else{
                         Toast.makeText(getActivity(), "Please fill all the fields for all the days of the week!", Toast.LENGTH_SHORT).show();
                     }
@@ -199,36 +207,31 @@ public class CreateTimeSheetFragment extends Fragment{
 
     public Date getDateOfDay(String today){
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        Date monday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-        Date tuesday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-        Date wednesday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-        Date thursday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-        Date friday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-        Date saturday = c.getTime();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-        Date sunday = c.getTime();
-
         switch (today){
             case"Monday":
-                return monday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                return c.getTime();
             case"Tuesday":
-                return tuesday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                return c.getTime();
             case"Wednesday":
-                return wednesday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                return c.getTime();
             case"Thursday":
-                return thursday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                return c.getTime();
             case"Friday":
-                return friday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                return c.getTime();
             case"Saturday":
-                return saturday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                return c.getTime();
             case"Sunday":
-                return sunday;
+                c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                Date date = c.getTime();
+                c.getTime();
+                c.add(Calendar.DATE,1);
+                return c.getTime();
             default:
                 return null;
         }
