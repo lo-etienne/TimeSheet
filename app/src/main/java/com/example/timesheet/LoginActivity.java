@@ -28,10 +28,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         getSupportActionBar().hide();
-       /* TimesheetRepository.getInstance().insertUser(new User(UUID.fromString("473eab19-1ef9-467a-9e59-17ac78675d83"), "Emile", "Davignon", true,"emiledavignon@gmail.com", "123123"));
-        TimesheetRepository.getInstance().insertUser(new User(UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), "Paul", "Basin", false, "paul.basin@gmail.com", "password"));*/
-        //TimesheetRepository.getInstance().insertUser(new User(UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a562"), "Emile", "Davignon", false, "emiledavignon@gmail.com", "1234"));
-        //TimesheetRepository.getInstance().insertUser(new User(UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a456"), "Paul", "Basin", false, "paul.basin@gmail.com", "passwords"));
+
+        DatabasePopulater.populateDb();
+
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.login_fragment_container);
         if(currentFragment == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.login_fragment_container, LoginFragment.getInstance()).commit();

@@ -37,6 +37,15 @@ public abstract class TimesheetDao {
     @Query("SELECT * FROM Timesheet WHERE timesheetId = (:timesheetId)")
     public abstract Timesheet getTimesheetObject(final UUID timesheetId);
 
+    @Query("SELECT COUNT(timesheetId) FROM Timesheet WHERE timesheetId = (:timesheetId)")
+    public abstract int hasTimesheet(final UUID timesheetId);
+
+    @Query("SELECT COUNT(uuid) FROM WorkDay WHERE uuid = (:uuid)")
+    public abstract int hasWorkday(final UUID uuid);
+
+    @Query("SELECT COUNT(userId) FROM User WHERE userId = (:userId)")
+    public abstract int hasUser(final UUID userId);
+
 
     @Transaction
     @Query("SELECT * FROM User WHERE userId = (:userId)")
@@ -102,5 +111,24 @@ public abstract class TimesheetDao {
     public void deleteTimesheetAndWorkdays(final UUID timesheetId) {
         deleteWorkdaysByTimesheetId(timesheetId);
         deleteTimesheetById(timesheetId);
+    }
+
+    @Transaction
+    public void populateDatabse(List<User> users, List<WorkDay> workDays, List<Timesheet> timesheets) {
+        for (User user: users) {
+            if(hasUser(user.getUserId()) == 0) {
+                insertUser(user);
+            }
+        }
+        for (WorkDay day : workDays) {
+            if(hasWorkday(day.getUuid()) == 0) {
+                insertWorkDay(day);
+            }
+        }
+        for (Timesheet timesheet : timesheets) {
+            if(hasTimesheet(timesheet.getTimesheetId()) == 0) {
+                insertTimesheet(timesheet);
+            }
+        }
     }
 }

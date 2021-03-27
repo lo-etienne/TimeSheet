@@ -5,5 +5,5 @@
         android:id="@+id/delete_timesheet"
         android:icon="@drawable/ic_delete_timesheet"
         android:title="Delete Timesheet"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"/>
 </menu>

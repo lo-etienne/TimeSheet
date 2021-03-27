@@ -1,6 +1,7 @@
 package com.example.timesheet.database.repository;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Transaction;
 
 import com.example.timesheet.database.TimesheetDatabase;
 import com.example.timesheet.database.dao.TimesheetDao;
@@ -177,4 +178,37 @@ public class TimesheetRepository implements IRepository {
     public void getAllUsers() {
         timesheetDao.getAllUsers();
     }
+
+    @Override
+    public void populateDatabase(final List<User> users, final List<WorkDay> workDays, final List<Timesheet> timesheets) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                timesheetDao.populateDatabse(users,workDays, timesheets);
+            }
+        });
+    }
+
+    /*
+    @Override
+    public int hasUser(UUID userId) {
+        return timesheetDao.hasUser(userId);
+    }
+
+    @Override
+    public int hasTimesheet(UUID timesheetId) {
+        return timesheetDao.hasTimesheet(timesheetId);
+    }
+
+    @Override
+    public int hasWorkday(UUID workdayId) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                timesheetDao.hasWorkday(workdayId);
+            }
+        });
+    }
+
+     */
 }

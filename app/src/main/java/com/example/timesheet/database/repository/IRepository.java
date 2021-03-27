@@ -35,4 +35,13 @@ public interface IRepository {
     void deleteWorkDay(final WorkDay workDay);
     void deleteTimesheetAndWorkdays(final UUID timesheetId);
     void getAllUsers();
+
+    void populateDatabase(final List<User> users, final List<WorkDay> workDays, final List<Timesheet> timesheets);
+
+    /*
+    int hasUser(final UUID userId);
+    int hasTimesheet(final UUID timesheetId);
+    int hasWorkday(final UUID workdayId);
+
+     */
 }
