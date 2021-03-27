@@ -92,6 +92,7 @@ public class TimesheetsPageFragment extends Fragment implements ITimesheetsScree
         if(item.getItemId() == R.id.add) {
             Intent intent = new Intent(getContext(), CreateTimeSheetActivity.class);
             intent.putExtra("userId", userId.toString());
+            intent.putExtra("isManager", getActivity().getIntent().getBooleanExtra("isManager", false));
             startActivity(intent);
             return true;
         } else

@@ -21,7 +21,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"
             android:id="@+id/time_sheet_infos"
-            android:layout_width="280dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 

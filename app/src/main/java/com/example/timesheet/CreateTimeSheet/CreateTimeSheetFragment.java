@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.timesheet.Home.HomeActivity;
 import com.example.timesheet.R;
+import com.example.timesheet.database.repository.TimesheetRepository;
 import com.example.timesheet.model.Timesheet;
 import com.example.timesheet.model.WorkDay;
 import java.util.ArrayList;
@@ -194,6 +195,7 @@ public class CreateTimeSheetFragment extends Fragment{
                         Toast.makeText(getActivity(), "Timesheet created", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), HomeActivity.class);
                         intent.putExtra("userId", userId.toString());
+                        intent.putExtra("isManager", getActivity().getIntent().getBooleanExtra("isManager", false));
                         startActivity(intent);
                     }else{
                         Toast.makeText(getActivity(), "Please fill all the fields for all the days of the week!", Toast.LENGTH_SHORT).show();

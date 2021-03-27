@@ -31,31 +31,6 @@ public class HomeActivity extends AppCompatActivity implements ManagedPageFragme
         userId = UUID.fromString(getIntent().getStringExtra("userId"));
         isManager = getIntent().getBooleanExtra("isManager", false);
 
-
-
-
-       /*
-
-        TimesheetRepository.getInstance().insertWorkday(monday);
-        TimesheetRepository.getInstance().insertWorkday(tuesday);
-        TimesheetRepository.getInstance().insertWorkday(wednesday);
-        TimesheetRepository.getInstance().insertWorkday(thursday);
-        TimesheetRepository.getInstance().insertWorkday(friday);
-        TimesheetRepository.getInstance().insertWorkday(saturday);
-        TimesheetRepository.getInstance().insertWorkday(sunday);
-
-
-        Timesheet timesheet = new Timesheet(timesheetId, "INT-178", "Final sprint", "Belgium", new Date(), 0, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
-        Timesheet timesheet1 = new Timesheet(timesheetId1, "INT-12347", "Meeting with client", "France", new Date(), 2, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
-        Timesheet timesheet2 = new Timesheet(timesheetId2, "INT-1263", "Finish project","Belgium", new Date(), 2, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
-        Timesheet timesheet3 = new Timesheet(timesheetId3, "INT-12738", "Begin project","Belgium", new Date(), 1, UUID.fromString("bd963076-7a9f-4cfb-8f43-6f5509f9a922"), workDayList);
-
-        TimesheetRepository.getInstance().insertTimesheet(timesheet);
-        TimesheetRepository.getInstance().insertTimesheet(timesheet1);
-        TimesheetRepository.getInstance().insertTimesheet(timesheet2);
-        TimesheetRepository.getInstance().insertTimesheet(timesheet3);
-        
- */
         setContentView(R.layout.activity_home);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_fragment_container);
